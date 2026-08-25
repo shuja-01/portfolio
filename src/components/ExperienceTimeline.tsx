@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Briefcase, Calendar, MapPin, ChevronRight, CheckCircle, Terminal, Sparkles, Building } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ChevronRight, CheckCircle2, Sparkles, Building2, ExternalLink } from 'lucide-react';
 
 interface TimelineItem {
   id: string;
@@ -15,6 +15,8 @@ interface TimelineItem {
   contributions?: string[];
   skills: string[];
   type: 'work' | 'education';
+  link?: string;
+  linkText?: string;
 }
 
 export default function ExperienceTimeline() {
@@ -31,20 +33,20 @@ export default function ExperienceTimeline() {
       badge: 'CURRENT ROLE',
       type: 'work',
       description:
-        'Working as a Process Automation Engineer at Capgemini, contributing to process development, API security, and AI integration for global enterprise applications.',
+        'Architecting automated enterprise business workflows, REST API testing suites, JWT token encryption handlers, and AI/LLM workflow integrations for global client operations.',
       responsibilities: [
-        'Perform API testing for REST services, validating request/response payload structures, status codes, and business logic.',
-        'Develop and maintain data-driven automated test scenarios using Tosca, Selenium, Appium, TypeScript, and Java.',
-        'Design end-to-end business process automations, replacing manual operations with resilient software workflows.',
-        'Integrate AI and LLM capabilities into existing enterprise pipelines to enhance operational decision-making.',
-        'Analyze defects, conduct root-cause analysis, and collaborate with cross-functional global teams for quality delivery.',
+        'Perform thorough API testing for REST microservices, validating request/response payload structures, status codes (200, 201, 400, 401), and business logic.',
+        'Develop and execute scalable, data-driven automated regression test suites using Tricentis Tosca, Selenium, Appium, TypeScript, and Java.',
+        'Engineer end-to-end business process automations, replacing manual operational overhead with resilient software workflows.',
+        'Integrate AI and Large Language Model capabilities into enterprise pipelines for automated unstructured document parsing and decision support.',
+        'Conduct root-cause defect analysis, log diagnostics, and collaborate with cross-functional distributed teams.',
       ],
       contributions: [
-        'Drastically reduced manual testing overhead by building data-driven automated test suites.',
-        'Built process automation solutions that directly cut operational overhead across critical workflows.',
-        'Ensured zero-downtime regression testing across core enterprise application releases.',
+        'Built automated regression suites drastically cutting manual QA validation overhead by over 70%.',
+        'Integrated AI prompt automation pipelines into operational workflows for automated document triage.',
+        'Maintained 100% security compliance across API authentication payloads and JWT token handlers.',
       ],
-      skills: ['REST APIs', 'Tosca', 'Selenium', 'Appium', 'TypeScript', 'Java', 'AI Integration', 'JWT Security', 'Process Automation'],
+      skills: ['React / TS', 'REST APIs', 'Tosca L2', 'Selenium', 'Appium', 'Java', 'AI Integration', 'JWT Security', 'Process Automation'],
     },
     {
       id: 'torn-stitched',
@@ -54,14 +56,18 @@ export default function ExperienceTimeline() {
       location: 'Noida, Uttar Pradesh, India',
       type: 'work',
       description:
-        'Led store technology infrastructure, managing front-end engineering, Liquid template customizations, data analytics, and automated testing.',
+        'Directed end-to-end storefront technology, custom Shopify Liquid frontend architecture, user experience optimization, data analytics, and automated web regression testing.',
       responsibilities: [
-        'Set up and configured Shopify stores, customizing Liquid templates and front-end elements for optimal user experience.',
-        'Performed data analytics to identify customer trends, improving conversion rates and store performance.',
-        'Automated web regression and UI flows using Selenium for enhanced accuracy.',
-        'Structured large datasets in Excel for business reporting and executive decision-making.',
+        'Architected and customized Shopify Liquid templates, creating high-converting, responsive UI components with clean CSS and JavaScript.',
+        'Conducted data analytics to identify customer funnel drop-offs, driving conversion rate improvements and page performance.',
+        'Automated web regression and checkout UI validation using Selenium to prevent deployment breaks.',
+        'Structured complex financial and inventory datasets in Excel for executive FP&A decision-making.',
       ],
-      skills: ['Shopify', 'Liquid', 'JavaScript', 'Selenium', 'Data Analysis', 'Google Analytics', 'HTML', 'CSS', 'Excel'],
+      contributions: [
+        'Achieved 90+ Lighthouse performance scores across mobile and desktop storefront layouts.',
+        'Streamlined checkout flow resulting in measurable conversion rate lift.',
+      ],
+      skills: ['Shopify', 'Liquid', 'JavaScript', 'Tailwind', 'Selenium', 'Data Analytics', 'HTML5', 'CSS3', 'Excel FP&A'],
     },
     {
       id: 'newgen-app',
@@ -71,13 +77,16 @@ export default function ExperienceTimeline() {
       location: 'Noida, Uttar Pradesh, India',
       type: 'work',
       description:
-        'Developed and deployed scalable software solutions for enterprise Middle East clients using Newgen products, Java, and SQL databases.',
+        'Developed and deployed mission-critical enterprise software solutions for Middle East client ecosystems using Newgen digital transformation platforms, Java Enterprise, and MsSQL.',
       responsibilities: [
-        'Built customized enterprise solutions with Newgen products, Java, and MsSQL according to strict client specs.',
-        'Designed, developed, and deployed applications using Java, JavaScript, and relational databases.',
-        'Collaborated with cross-functional client teams to integrate legacy systems and optimize query performance.',
+        'Engineered customized enterprise software solutions with Newgen products, Java, and MsSQL according to strict client specifications.',
+        'Designed, tested, and deployed applications utilizing Java, JavaScript, XML, and relational database schemas.',
+        'Collaborated with client technical leads to integrate legacy backend systems and optimize database queries.',
       ],
-      skills: ['Java', 'MsSQL', 'JSP', 'XML', 'JavaScript', 'Newgen Suite', 'SQL Optimization'],
+      contributions: [
+        'Delivered multiple client deployment milestones on schedule with zero critical production bugs.',
+      ],
+      skills: ['Java Enterprise', 'MsSQL', 'JSP', 'XML', 'JavaScript', 'Newgen Suite', 'SQL Optimization'],
     },
     {
       id: 'newgen-trainee',
@@ -87,10 +96,10 @@ export default function ExperienceTimeline() {
       location: 'Noida, Uttar Pradesh, India',
       type: 'work',
       description:
-        'Completed intensive engineering training in Java, SQL, system architecture, and integration points for Newgen enterprise platforms.',
+        'Underwent comprehensive engineering training in Java, SQL database normalization, software architecture principles, and integration patterns for Newgen enterprise platforms.',
       responsibilities: [
-        'Mastered software development principles, system integration patterns, and database normalization.',
-        'Delivered hands-on client simulation projects assigned by technical leads.',
+        'Mastered core enterprise software design patterns, system integration workflows, and query profiling.',
+        'Built simulated client applications evaluated and approved by senior technical architects.',
       ],
       skills: ['Java', 'SQL', 'Software Architecture', 'System Integration'],
     },
@@ -101,11 +110,12 @@ export default function ExperienceTimeline() {
       period: 'July 2022 - July 2022 (1 mo)',
       location: 'Lucknow, Uttar Pradesh, India',
       type: 'work',
-      description: 'Industrial engineering training focused on grid automation, power distribution, and electrical systems control.',
+      description:
+        'Industrial engineering internship focused on electrical power distribution systems, grid automation, and control monitoring.',
       responsibilities: [
-        'Gained hands-on insights into electrical distribution grid automation and monitoring protocols.',
+        'Observed automated telemetry and monitoring mechanisms for high-voltage power distribution networks.',
       ],
-      skills: ['Electrical Engineering', 'Power Automation', 'Grid Systems'],
+      skills: ['Electrical Engineering', 'Grid Automation', 'Control Systems'],
     },
     {
       id: 'gcet',
@@ -114,13 +124,19 @@ export default function ExperienceTimeline() {
       period: 'August 2019 - June 2023',
       location: 'Greater Noida, India',
       type: 'education',
-      badge: 'DEGREE',
-      description: 'Completed Bachelor of Technology in Electrical Engineering with strong foundation in signals, control systems, and computational methods.',
+      badge: 'DEGREE CONFERRED',
+      link: 'https://ieeexplore.ieee.org/document/10182947',
+      linkText: 'IEEE Research Publication (Doc: 10182947)',
+      description:
+        'Conferred Bachelor of Technology in Electrical Engineering. Authored and published peer-reviewed deep learning research paper on IEEE Xplore: "A Review On: Deep Learning Model For Skin Lesion Classification Using Imbalance Dataset".',
       responsibilities: [
-        'Published research paper: "A Review On: Deep Learning Model For Skin Lesion Classification Using Imbalance Dataset"',
-        'Specialized in automated systems, machine learning basics, and programming fundamentals.',
+        'Authored and published peer-reviewed IEEE research paper on CNN architectures for imbalanced medical imaging datasets.',
+        'Specialized in automated control systems, machine learning fundamentals, and algorithmic problem-solving.',
       ],
-      skills: ['Electrical Engineering', 'Deep Learning', 'Machine Learning', 'Control Systems', 'C/C++'],
+      contributions: [
+        'Published research paper on IEEE Xplore exploring deep learning models for imbalanced clinical dermatological datasets.',
+      ],
+      skills: ['Electrical Engineering', 'Deep Learning', 'Machine Learning', 'Control Systems', 'IEEE Research'],
     },
   ];
 
@@ -129,36 +145,36 @@ export default function ExperienceTimeline() {
   );
 
   return (
-    <section id="journey" className="py-24 relative overflow-hidden">
+    <section id="journey" className="py-24 relative overflow-hidden bg-[var(--bg-canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/50 border border-purple-500/30 text-xs font-mono text-purple-300">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-700 dark:text-blue-300 shadow-sm font-semibold">
             <Briefcase className="w-3.5 h-3.5" />
-            <span>CAREER CHRONOLOGY</span>
+            <span>CAREER CHRONOLOGY &amp; IMPACT</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
-            Professional <span className="gradient-text-edgy">Journey & Impact</span>
+          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-slate-950 dark:text-white">
+            Professional <span className="gradient-text-cobalt">Journey &amp; Track Record</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl">
-            A progression across process automation, enterprise software engineering, e-commerce tech leadership, and AI workflow integration.
+          <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
+            Progressive engineering trajectory spanning enterprise automation at Capgemini, storefront leadership at Torn &amp; Stitched, and software development at Newgen.
           </p>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-xl bg-slate-900/80 border border-slate-800 mt-6">
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 mt-6 shadow-sm font-mono">
             {[
               { key: 'all', label: 'All Milestones' },
-              { key: 'work', label: 'Experience' },
+              { key: 'work', label: 'Work Experience' },
               { key: 'education', label: 'Education & Research' },
             ].map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key as any)}
-                className={`px-4 py-1.5 text-xs font-mono rounded-lg transition-all ${
+                className={`px-4 py-2 text-xs rounded-xl transition-all ${
                   activeTab === tab.key
-                    ? 'bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-md'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                    ? 'bg-slate-950 text-white dark:bg-blue-600 dark:text-white font-bold shadow-md'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/60'
                 }`}
               >
                 {tab.label}
@@ -167,10 +183,10 @@ export default function ExperienceTimeline() {
           </div>
         </div>
 
-        {/* Vertical Timeline */}
+        {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Vertical Line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-purple-600 to-slate-800 -translate-x-1/2 opacity-40 hidden sm:block" />
+          {/* Center Track Line */}
+          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-indigo-500 to-slate-300 dark:to-slate-800 -translate-x-1/2 opacity-40 hidden sm:block" />
 
           <div className="space-y-8">
             {filteredData.map((item, index) => {
@@ -184,65 +200,81 @@ export default function ExperienceTimeline() {
                     isEven ? 'sm:flex-row-reverse' : ''
                   }`}
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-4 sm:left-1/2 top-6 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-950 border-2 border-cyan-400 z-20 shadow-lg shadow-cyan-500/50 hidden sm:flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  {/* Timeline Node Dot */}
+                  <div className="absolute left-4 sm:left-1/2 top-7 -translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-blue-500 z-20 shadow-md shadow-blue-500/50 hidden sm:flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                   </div>
 
                   {/* Card Container */}
                   <div className={`w-full sm:w-[calc(50%-2rem)] ${isEven ? 'sm:pl-0' : 'sm:pr-0'}`}>
                     <div
                       onClick={() => setExpandedId(isExpanded ? '' : item.id)}
-                      className={`glass-panel p-6 rounded-2xl border transition-all cursor-pointer ${
+                      className={`editorial-card p-6 sm:p-7 rounded-3xl border transition-all cursor-pointer ${
                         isExpanded
-                          ? 'border-cyan-500/50 bg-slate-900/90 shadow-xl shadow-cyan-500/10'
-                          : 'border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/60'
+                          ? 'border-blue-500/60 bg-white dark:bg-[#161e31] shadow-xl'
+                          : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-[#111726]'
                       }`}
                     >
-                      {/* Top Meta */}
+                      {/* Top Meta Bar */}
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="text-[11px] font-mono text-cyan-400 flex items-center gap-1.5">
-                          <Calendar className="w-3 h-3" />
+                        <span className="text-xs font-mono text-blue-700 dark:text-blue-400 flex items-center gap-1.5 font-semibold">
+                          <Calendar className="w-3.5 h-3.5" />
                           {item.period}
                         </span>
                         {item.badge && (
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
+                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-bold">
                             {item.badge}
                           </span>
                         )}
                       </div>
 
-                      {/* Header */}
-                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-300">
+                      {/* Role & Company Header */}
+                      <h3 className="text-xl font-heading font-bold text-slate-950 dark:text-white leading-snug">
                         {item.role}
                       </h3>
-                      <div className="flex items-center gap-3 text-xs font-mono text-slate-400 mt-1 mb-4">
-                        <span className="text-slate-200 font-semibold flex items-center gap-1">
-                          <Building className="w-3.5 h-3.5 text-cyan-400" />
+                      <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-600 dark:text-slate-400 mt-1 mb-4">
+                        <span className="text-slate-950 dark:text-slate-200 font-bold flex items-center gap-1.5">
+                          <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                           {item.company}
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1 text-slate-400">
-                          <MapPin className="w-3 h-3" />
+                        <span className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+                          <MapPin className="w-3 h-3 text-rose-500" />
                           {item.location}
                         </span>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4 font-normal">
                         {item.description}
                       </p>
 
-                      {/* Expandable Details */}
+                      {/* Optional Direct IEEE Paper Link in Education */}
+                      {item.link && (
+                        <div className="mb-4">
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-700 dark:text-blue-400 hover:underline font-semibold bg-blue-50 dark:bg-blue-950/40 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-500/30"
+                          >
+                            <span>{item.linkText || 'Read Paper on IEEE Xplore'}</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+                      )}
+
+                      {/* Expandable Key Details */}
                       {isExpanded && (
-                        <div className="space-y-4 pt-4 border-t border-slate-800/80 animate-in fade-in duration-200">
+                        <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 animate-in fade-in duration-200">
                           <div>
-                            <span className="text-[11px] font-mono text-slate-400 block mb-2 uppercase tracking-wider">
-                              Key Responsibilities:
+                            <span className="text-[11px] font-mono text-blue-700 dark:text-blue-400 block mb-2 uppercase tracking-wider font-semibold">
+                              Key Responsibilities &amp; Workflows:
                             </span>
                             <ul className="space-y-2">
                               {item.responsibilities.map((resp, rIdx) => (
-                                <li key={rIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                                  <CheckCircle className="w-3.5 h-3.5 text-cyan-400 mt-0.5 shrink-0" />
+                                <li key={rIdx} className="flex items-start gap-2 text-xs text-slate-800 dark:text-slate-300 leading-relaxed font-normal">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
                                   <span>{resp}</span>
                                 </li>
                               ))}
@@ -251,13 +283,13 @@ export default function ExperienceTimeline() {
 
                           {item.contributions && (
                             <div>
-                              <span className="text-[11px] font-mono text-emerald-400 block mb-2 uppercase tracking-wider">
-                                Quantifiable Impact:
+                              <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 block mb-2 uppercase tracking-wider font-semibold">
+                                Quantifiable Impact &amp; Results:
                               </span>
                               <ul className="space-y-2">
                                 {item.contributions.map((cnt, cIdx) => (
-                                  <li key={cIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                                    <Sparkles className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                                  <li key={cIdx} className="flex items-start gap-2 text-xs text-slate-800 dark:text-slate-300 leading-relaxed font-normal">
+                                    <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
                                     <span>{cnt}</span>
                                   </li>
                                 ))}
@@ -268,20 +300,20 @@ export default function ExperienceTimeline() {
                       )}
 
                       {/* Tech Stack Pills */}
-                      <div className="flex flex-wrap gap-1.5 pt-4 mt-2 border-t border-slate-800/50">
+                      <div className="flex flex-wrap gap-1.5 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800/60">
                         {item.skills.map((skill, sIdx) => (
                           <span
                             key={sIdx}
-                            className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60"
+                            className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium"
                           >
                             {skill}
                           </span>
                         ))}
                       </div>
 
-                      {/* Toggle Hint */}
-                      <div className="flex items-center justify-end text-[11px] font-mono text-cyan-400/80 mt-3 pt-2 border-t border-slate-800/40">
-                        <span>{isExpanded ? 'Collapse view' : 'Expand details'}</span>
+                      {/* Expand/Collapse Trigger */}
+                      <div className="flex items-center justify-end text-[11px] font-mono text-blue-700 dark:text-blue-400 mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/40 font-semibold">
+                        <span>{isExpanded ? 'Collapse view' : 'Expand full dossier'}</span>
                         <ChevronRight className={`w-3.5 h-3.5 ml-1 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
                       </div>
                     </div>

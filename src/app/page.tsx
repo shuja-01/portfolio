@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -9,43 +9,69 @@ import SkillsMatrix from '@/components/SkillsMatrix';
 import TerminalDeck from '@/components/TerminalDeck';
 import PublicationsCerts from '@/components/PublicationsCerts';
 import ContactSection from '@/components/ContactSection';
-import ResumeModal from '@/components/ResumeModal';
 import Footer from '@/components/Footer';
+import ResumeModal from '@/components/ResumeModal';
+import CommandPalette from '@/components/CommandPalette';
 
 export default function Home() {
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+
+  // Global ⌘K Keyboard Listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#07090e] text-slate-100 relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Floating Translucent Glass Navbar */}
-      <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+    <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] relative overflow-x-hidden">
+      
+      {/* Precision Navigation Header */}
+      <Navbar
+        onOpenResume={() => setResumeOpen(true)}
+      />
 
-      {/* Full-Bleed Hero Banner */}
-      <HeroSection onOpenResume={() => setIsResumeOpen(true)} />
+      {/* Main Structural Flow */}
+      <main>
+        <HeroSection
+          onOpenResume={() => setResumeOpen(true)}
+        />
 
-      {/* Executive Background & Architecture */}
-      <AboutSection />
+        <AboutSection onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Interactive Career Chronology */}
-      <ExperienceTimeline />
+        <ExperienceTimeline />
 
-      {/* Technical Stack & Capabilities Matrix */}
-      <SkillsMatrix />
+        <SkillsMatrix />
 
-      {/* Full-Width Developer Terminal CLI Deck */}
-      <TerminalDeck />
+        <TerminalDeck />
 
-      {/* Peer Research & Certifications */}
-      <PublicationsCerts />
+        <PublicationsCerts />
 
-      {/* Direct Contact & Social Links */}
-      <ContactSection />
+        <ContactSection />
+      </main>
 
-      {/* Footer */}
+      {/* Global Footer & Diagnostics */}
       <Footer />
 
-      {/* PDF Document Viewer Modal */}
-      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      {/* Interactive Resume Modal Viewer */}
+      <ResumeModal
+        isOpen={resumeOpen}
+        onClose={() => setResumeOpen(false)}
+      />
+
+      {/* Universal ⌘K Command Palette (Available via ⌘K shortcut) */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+        onOpenResume={() => setResumeOpen(true)}
+      />
+
     </div>
   );
 }
