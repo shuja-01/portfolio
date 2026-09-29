@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Menu, X, FileText } from 'lucide-react';
+import { Menu, X, FileText, Volume2, VolumeX, Sparkles } from 'lucide-react';
 import LinkedinIcon from './LinkedinIcon';
+import { sound } from '@/utils/soundEffects';
 
 interface NavbarProps {
   onOpenResume: () => void;
@@ -15,6 +16,16 @@ interface NavbarProps {
 export default function Navbar({ onOpenResume }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [soundActive, setSoundActive] = useState(false);
+
+  useEffect(() => {
+    setSoundActive(!sound.getIsMuted());
+  }, []);
+
+  const toggleSound = () => {
+    const isNowActive = sound.toggleMute();
+    setSoundActive(isNowActive);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,13 +105,33 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
           </nav>
 
           {/* Right Action Tools */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* 3D Audio Toggle */}
+            <button
+              onClick={toggleSound}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono font-semibold transition-all ${
+                soundActive
+                  ? 'bg-blue-600/20 border-blue-500 text-blue-400 ring-1 ring-blue-500/40 shadow-sm'
+                  : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+              title={soundActive ? '3D Spatial Audio Enabled (Click to mute)' : 'Enable 3D Audio Cues'}
+            >
+              {soundActive ? <Volume2 className="w-3.5 h-3.5 text-blue-400" /> : <VolumeX className="w-3.5 h-3.5 text-slate-500" />}
+              <span className="hidden xl:inline">{soundActive ? '3D Audio ON' : '3D Audio'}</span>
+            </button>
+
+            {/* 3D Mode Active Badge */}
+            <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-mono text-emerald-400 font-semibold shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>3D WEBGL</span>
+            </span>
+
             {/* LinkedIn Quick Connect */}
             <a
               href="https://www.linkedin.com/in/mshuja-rizvi/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-blue-400 border border-slate-800 transition-all text-xs font-mono font-semibold shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-blue-400 border border-slate-800 transition-all text-xs font-mono font-semibold shadow-sm"
               title="LinkedIn Profile"
             >
               <LinkedinIcon className="w-3.5 h-3.5 text-blue-400" />
@@ -110,7 +141,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
             {/* Profile PDF Viewer Button */}
             <button
               onClick={onOpenResume}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl font-mono text-xs font-bold transition-all shadow-md bg-blue-600 hover:bg-blue-500 text-white"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl font-mono text-xs font-bold transition-all shadow-md bg-blue-600 hover:bg-blue-500 text-white"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Profile PDF</span>

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Briefcase, Calendar, MapPin, ChevronRight, CheckCircle2, Sparkles, Building2, ExternalLink } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ChevronRight, CheckCircle2, Sparkles, Building2, ExternalLink, Play, Pause, RotateCcw, ChevronDown, ListFilter } from 'lucide-react';
+import Card3DTilt from '@/components/3d/Card3DTilt';
 
 interface TimelineItem {
   id: string;
@@ -22,6 +23,10 @@ interface TimelineItem {
 export default function ExperienceTimeline() {
   const [activeTab, setActiveTab] = useState<'all' | 'work' | 'education'>('all');
   const [expandedId, setExpandedId] = useState<string>('capgemini');
+  
+  // Interactive Career Playback State
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackIndex, setPlaybackIndex] = useState<number>(0);
 
   const timelineData: TimelineItem[] = [
     {
@@ -104,20 +109,6 @@ export default function ExperienceTimeline() {
       skills: ['Java', 'SQL', 'Software Architecture', 'System Integration'],
     },
     {
-      id: 'uppcl',
-      company: 'Uttar Pradesh Power Corporation (UPPCL)',
-      role: 'Engineering Trainee',
-      period: 'July 2022 - July 2022 (1 mo)',
-      location: 'Lucknow, Uttar Pradesh, India',
-      type: 'work',
-      description:
-        'Industrial engineering internship focused on electrical power distribution systems, grid automation, and control monitoring.',
-      responsibilities: [
-        'Observed automated telemetry and monitoring mechanisms for high-voltage power distribution networks.',
-      ],
-      skills: ['Electrical Engineering', 'Grid Automation', 'Control Systems'],
-    },
-    {
       id: 'gcet',
       company: 'Galgotias College of Engineering & Technology (GCET)',
       role: 'B.Tech in Electrical Engineering',
@@ -144,49 +135,90 @@ export default function ExperienceTimeline() {
     (item) => activeTab === 'all' || item.type === activeTab
   );
 
+  // Playback Auto Stepper
+  const togglePlayCareer = () => {
+    if (isPlaying) {
+      setIsPlaying(false);
+      return;
+    }
+
+    setIsPlaying(true);
+    let idx = 0;
+    setExpandedId(timelineData[0].id);
+
+    const interval = setInterval(() => {
+      idx += 1;
+      if (idx >= timelineData.length) {
+        clearInterval(interval);
+        setIsPlaying(false);
+        setExpandedId(timelineData[0].id);
+      } else {
+        setExpandedId(timelineData[idx].id);
+      }
+    }, 2000);
+  };
+
   return (
     <section id="journey" className="py-24 relative overflow-hidden bg-[var(--bg-canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-700 dark:text-blue-300 shadow-sm font-semibold">
+        <div className="flex flex-col items-center text-center space-y-4 mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-400 shadow-sm font-semibold">
             <Briefcase className="w-3.5 h-3.5" />
             <span>CAREER CHRONOLOGY &amp; IMPACT</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-slate-950 dark:text-white">
-            Professional <span className="gradient-text-cobalt">Journey &amp; Track Record</span>
+          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
+            Professional <span className="gradient-text-cobalt">Journey &amp; Milestones</span>
           </h2>
-          <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
             Progressive engineering trajectory spanning enterprise automation at Capgemini, storefront leadership at Torn &amp; Stitched, and software development at Newgen.
           </p>
 
-          {/* Filter Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 mt-6 shadow-sm font-mono">
-            {[
-              { key: 'all', label: 'All Milestones' },
-              { key: 'work', label: 'Work Experience' },
-              { key: 'education', label: 'Education & Research' },
-            ].map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key as any)}
-                className={`px-4 py-2 text-xs rounded-xl transition-all ${
-                  activeTab === tab.key
-                    ? 'bg-slate-950 text-white dark:bg-blue-600 dark:text-white font-bold shadow-md'
-                    : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/60'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          {/* Interactive Navigation & Playback Controls */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-4 font-mono text-xs">
+            
+            {/* Filter Tabs */}
+            <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-950 border border-slate-800 shadow-sm">
+              {[
+                { key: 'all', label: 'All Milestones (5)' },
+                { key: 'work', label: 'Work Experience (4)' },
+                { key: 'education', label: 'Education & Research (1)' },
+              ].map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key as any)}
+                  className={`px-3.5 py-1.5 rounded-xl transition-all ${
+                    activeTab === tab.key
+                      ? 'bg-blue-600 text-white font-bold shadow-md'
+                      : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Play Career Timeline Simulator Button */}
+            <button
+              onClick={togglePlayCareer}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all border font-bold ${
+                isPlaying
+                  ? 'bg-emerald-600 border-emerald-500 text-white shadow-lg shadow-emerald-600/30 animate-pulse'
+                  : 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
+              <span>{isPlaying ? 'Playing Trajectory...' : 'Play Career Walkthrough'}</span>
+            </button>
+
           </div>
         </div>
 
         {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto">
           {/* Center Track Line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-indigo-500 to-slate-300 dark:to-slate-800 -translate-x-1/2 opacity-40 hidden sm:block" />
+          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-indigo-500 to-slate-800 -translate-x-1/2 opacity-40 hidden sm:block" />
 
           <div className="space-y-8">
             {filteredData.map((item, index) => {
@@ -201,50 +233,57 @@ export default function ExperienceTimeline() {
                   }`}
                 >
                   {/* Timeline Node Dot */}
-                  <div className="absolute left-4 sm:left-1/2 top-7 -translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-blue-500 z-20 shadow-md shadow-blue-500/50 hidden sm:flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  <div
+                    className={`absolute left-4 sm:left-1/2 top-7 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-950 border-2 z-20 shadow-md hidden sm:flex items-center justify-center transition-all ${
+                      isExpanded
+                        ? 'border-blue-400 shadow-blue-500/50 scale-125'
+                        : 'border-slate-700'
+                    }`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${isExpanded ? 'bg-blue-400' : 'bg-slate-700'}`}></span>
                   </div>
 
                   {/* Card Container */}
                   <div className={`w-full sm:w-[calc(50%-2rem)] ${isEven ? 'sm:pl-0' : 'sm:pr-0'}`}>
-                    <div
-                      onClick={() => setExpandedId(isExpanded ? '' : item.id)}
-                      className={`editorial-card p-6 sm:p-7 rounded-3xl border transition-all cursor-pointer ${
-                        isExpanded
-                          ? 'border-blue-500/60 bg-white dark:bg-[#161e31] shadow-xl'
-                          : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-[#111726]'
-                      }`}
-                    >
+                    <Card3DTilt maxTilt={6} scale={1.01} className="w-full">
+                      <div
+                        onClick={() => setExpandedId(isExpanded ? '' : item.id)}
+                        className={`editorial-card p-6 sm:p-7 rounded-3xl border transition-all cursor-pointer ${
+                          isExpanded
+                            ? 'border-blue-500/60 bg-[#161e31] shadow-2xl ring-1 ring-blue-500/30'
+                            : 'border-slate-800 hover:border-slate-700 bg-[#111726]'
+                        }`}
+                      >
                       {/* Top Meta Bar */}
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="text-xs font-mono text-blue-700 dark:text-blue-400 flex items-center gap-1.5 font-semibold">
+                        <span className="text-xs font-mono text-blue-400 flex items-center gap-1.5 font-semibold">
                           <Calendar className="w-3.5 h-3.5" />
                           {item.period}
                         </span>
                         {item.badge && (
-                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-bold">
+                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
                             {item.badge}
                           </span>
                         )}
                       </div>
 
                       {/* Role & Company Header */}
-                      <h3 className="text-xl font-heading font-bold text-slate-950 dark:text-white leading-snug">
+                      <h3 className="text-xl font-heading font-bold text-white leading-snug">
                         {item.role}
                       </h3>
-                      <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-600 dark:text-slate-400 mt-1 mb-4">
-                        <span className="text-slate-950 dark:text-slate-200 font-bold flex items-center gap-1.5">
-                          <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                      <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 mt-1 mb-4">
+                        <span className="text-slate-200 font-bold flex items-center gap-1.5">
+                          <Building2 className="w-3.5 h-3.5 text-blue-400" />
                           {item.company}
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+                        <span className="flex items-center gap-1 text-slate-400">
                           <MapPin className="w-3 h-3 text-rose-500" />
                           {item.location}
                         </span>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4 font-normal">
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4 font-normal">
                         {item.description}
                       </p>
 
@@ -256,7 +295,7 @@ export default function ExperienceTimeline() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-700 dark:text-blue-400 hover:underline font-semibold bg-blue-50 dark:bg-blue-950/40 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-500/30"
+                            className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 hover:underline font-semibold bg-blue-950/40 px-3 py-1.5 rounded-lg border border-blue-500/30"
                           >
                             <span>{item.linkText || 'Read Paper on IEEE Xplore'}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -266,15 +305,15 @@ export default function ExperienceTimeline() {
 
                       {/* Expandable Key Details */}
                       {isExpanded && (
-                        <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 animate-in fade-in duration-200">
+                        <div className="space-y-4 pt-4 border-t border-slate-800/80 animate-in fade-in duration-200">
                           <div>
-                            <span className="text-[11px] font-mono text-blue-700 dark:text-blue-400 block mb-2 uppercase tracking-wider font-semibold">
+                            <span className="text-[11px] font-mono text-blue-400 block mb-2 uppercase tracking-wider font-semibold">
                               Key Responsibilities &amp; Workflows:
                             </span>
                             <ul className="space-y-2">
                               {item.responsibilities.map((resp, rIdx) => (
-                                <li key={rIdx} className="flex items-start gap-2 text-xs text-slate-800 dark:text-slate-300 leading-relaxed font-normal">
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                                <li key={rIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed font-normal">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 mt-0.5 shrink-0" />
                                   <span>{resp}</span>
                                 </li>
                               ))}
@@ -283,13 +322,13 @@ export default function ExperienceTimeline() {
 
                           {item.contributions && (
                             <div>
-                              <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 block mb-2 uppercase tracking-wider font-semibold">
+                              <span className="text-[11px] font-mono text-emerald-400 block mb-2 uppercase tracking-wider font-semibold">
                                 Quantifiable Impact &amp; Results:
                               </span>
                               <ul className="space-y-2">
                                 {item.contributions.map((cnt, cIdx) => (
-                                  <li key={cIdx} className="flex items-start gap-2 text-xs text-slate-800 dark:text-slate-300 leading-relaxed font-normal">
-                                    <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
+                                  <li key={cIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed font-normal">
+                                    <Sparkles className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                                     <span>{cnt}</span>
                                   </li>
                                 ))}
@@ -300,11 +339,11 @@ export default function ExperienceTimeline() {
                       )}
 
                       {/* Tech Stack Pills */}
-                      <div className="flex flex-wrap gap-1.5 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800/60">
+                      <div className="flex flex-wrap gap-1.5 pt-4 mt-2 border-t border-slate-800/60">
                         {item.skills.map((skill, sIdx) => (
                           <span
                             key={sIdx}
-                            className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium"
+                            className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-slate-950 text-slate-300 border border-slate-800 font-medium"
                           >
                             {skill}
                           </span>
@@ -312,12 +351,13 @@ export default function ExperienceTimeline() {
                       </div>
 
                       {/* Expand/Collapse Trigger */}
-                      <div className="flex items-center justify-end text-[11px] font-mono text-blue-700 dark:text-blue-400 mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/40 font-semibold">
-                        <span>{isExpanded ? 'Collapse view' : 'Expand full dossier'}</span>
+                      <div className="flex items-center justify-end text-[11px] font-mono text-blue-400 mt-3 pt-2 border-t border-slate-800/40 font-semibold">
+                        <span>{isExpanded ? 'Collapse view' : 'Click to expand details'}</span>
                         <ChevronRight className={`w-3.5 h-3.5 ml-1 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
                       </div>
                     </div>
-                  </div>
+                  </Card3DTilt>
+                </div>
                 </div>
               );
             })}

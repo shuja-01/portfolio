@@ -13,6 +13,8 @@ import Footer from '@/components/Footer';
 import ResumeModal from '@/components/ResumeModal';
 import CommandPalette from '@/components/CommandPalette';
 
+import Global3DBackground from '@/components/3d/Global3DBackground';
+
 export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
@@ -32,6 +34,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] relative overflow-x-hidden">
       
+      {/* Global Ambient 3D WebGL Background Starfield & Parallax */}
+      <Global3DBackground />
+
       {/* Precision Navigation Header */}
       <Navbar
         onOpenResume={() => setResumeOpen(true)}
