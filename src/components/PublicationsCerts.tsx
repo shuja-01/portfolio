@@ -78,12 +78,12 @@ export default function PublicationsCerts() {
         
         {/* Header */}
         <div className="flex flex-col items-center text-center space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-400 shadow-sm font-semibold">
-            <BookOpen className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-[#00f5ff]/30 text-xs font-mono text-[#00f5ff] shadow-sm font-semibold">
+            <BookOpen className="w-3.5 h-3.5 text-[#00f5ff]" />
             <span>PEER RESEARCH &amp; ACCREDITATIONS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
-            Publications &amp; <span className="gradient-text-cobalt">Certifications</span>
+            Publications &amp; <span className="gradient-text-cyber">Certifications</span>
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
             Demonstrated track record of academic research published on IEEE Xplore, agentic AI workflows, and industry-recognized enterprise accreditations.
@@ -91,12 +91,12 @@ export default function PublicationsCerts() {
         </div>
 
         {/* Featured Research Paper Card with Interactive Model Explorer */}
-        <div className="editorial-card p-6 sm:p-10 rounded-3xl border border-slate-800 bg-[#111726] mb-16 relative overflow-hidden shadow-2xl space-y-8">
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-blue-600/5 blur-3xl pointer-events-none"></div>
+        <div className="editorial-card p-6 sm:p-10 rounded-3xl border border-[#00f5ff]/20 bg-[#080e1c]/85 mb-16 relative overflow-hidden shadow-2xl space-y-8">
+          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#00f5ff]/5 blur-3xl pointer-events-none"></div>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10 border-b border-slate-800 pb-8">
             <div className="space-y-4 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-500/30 text-xs font-mono text-blue-300 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f5ff]/10 border border-[#00f5ff]/30 text-xs font-mono text-[#00f5ff] font-semibold">
                 <FileCheck2 className="w-3.5 h-3.5" />
                 <span>IEEE XPLORE RESEARCH PUBLICATION</span>
               </div>
@@ -106,10 +106,10 @@ export default function PublicationsCerts() {
                   href="https://ieeexplore.ieee.org/document/10182947"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors inline-flex items-center gap-2 group"
+                  className="hover:text-[#00f5ff] transition-colors inline-flex items-center gap-2 group"
                 >
                   <span>&quot;A Review On: Deep Learning Model For Skin Lesion Classification Using Imbalance Dataset&quot;</span>
-                  <ExternalLink className="w-5 h-5 text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform shrink-0" />
+                  <ExternalLink className="w-5 h-5 text-[#00f5ff] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform shrink-0" />
                 </a>
               </h3>
 
@@ -117,7 +117,7 @@ export default function PublicationsCerts() {
                 Investigated convolutional neural network (CNN) architectures for early dermatological lesion classification. Explored data augmentation, synthetic sampling (SMOTE/GAN), and loss-function reweighting techniques to overcome severe class imbalances in clinical image datasets.
               </p>
 
-              <div className="flex flex-wrap gap-2 text-xs font-mono text-blue-300 pt-1">
+              <div className="flex flex-wrap gap-2 text-xs font-mono text-[#00f5ff] pt-1">
                 <span className="bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 font-medium">#IEEE_Xplore</span>
                 <span className="bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 font-medium">#DeepLearning</span>
                 <span className="bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 font-medium">#ComputerVision</span>
@@ -130,7 +130,7 @@ export default function PublicationsCerts() {
                 href="https://ieeexplore.ieee.org/document/10182947"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-bold transition-all shadow-md bg-blue-600 hover:bg-blue-500 text-white text-center hover:scale-[1.02]"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-bold transition-all shadow-md shadow-[#00f5ff]/25 bg-[#00f5ff] hover:bg-[#00e1eb] text-slate-950 text-center hover:scale-[1.02]"
               >
                 <span>Read on IEEE Xplore</span>
                 <ExternalLink className="w-4 h-4" />
@@ -139,7 +139,7 @@ export default function PublicationsCerts() {
               <div className="editorial-card p-4 rounded-2xl border border-slate-800 space-y-1 text-center bg-slate-900/60">
                 <span className="text-[10px] font-mono text-slate-400 block uppercase tracking-wider font-semibold">AFFILIATION &amp; DOI</span>
                 <span className="text-white font-heading font-bold text-xs block">GCET Research Publication</span>
-                <span className="text-[11px] text-blue-400 font-mono block">IEEE Doc: 10182947</span>
+                <span className="text-[11px] text-[#00f5ff] font-mono block">IEEE Doc: 10182947</span>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function PublicationsCerts() {
           {/* Interactive Deep Learning Model Explorer Widget */}
           <div className="space-y-4 relative z-10">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2 text-xs font-mono text-blue-400 font-semibold">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#00f5ff] font-semibold">
                 <Brain className="w-4 h-4 text-purple-400" />
                 <span>INTERACTIVE RESEARCH MODEL EXPLORER</span>
               </div>
@@ -157,7 +157,7 @@ export default function PublicationsCerts() {
                 <button
                   onClick={() => setActiveModelTab('imbalance')}
                   className={`px-3 py-1 rounded-lg transition-all ${
-                    activeModelTab === 'imbalance' ? 'bg-blue-600 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    activeModelTab === 'imbalance' ? 'bg-[#00f5ff] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   1. Imbalance Challenge
@@ -165,7 +165,7 @@ export default function PublicationsCerts() {
                 <button
                   onClick={() => setActiveModelTab('augmentation')}
                   className={`px-3 py-1 rounded-lg transition-all ${
-                    activeModelTab === 'augmentation' ? 'bg-blue-600 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    activeModelTab === 'augmentation' ? 'bg-[#00f5ff] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   2. Synthetic Sampling
@@ -173,7 +173,7 @@ export default function PublicationsCerts() {
                 <button
                   onClick={() => setActiveModelTab('metrics')}
                   className={`px-3 py-1 rounded-lg transition-all ${
-                    activeModelTab === 'metrics' ? 'bg-blue-600 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    activeModelTab === 'metrics' ? 'bg-[#00f5ff] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   3. CNN Inferences
@@ -237,12 +237,12 @@ export default function PublicationsCerts() {
                 </div>
                 <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                   <span className="text-slate-500 text-[10px]">MALIGNANT SENSITIVITY</span>
-                  <div className="text-2xl font-bold text-blue-400">94.2%</div>
+                  <div className="text-2xl font-bold text-[#00f5ff]">94.2%</div>
                   <span className="text-[10px] text-slate-400">High True Positive Recall</span>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                   <span className="text-slate-500 text-[10px]">SPECIFICITY</span>
-                  <div className="text-2xl font-bold text-purple-400">95.6%</div>
+                  <div className="text-2xl font-bold text-[#a855f7]">95.6%</div>
                   <span className="text-[10px] text-slate-400">Benign Filter Precision</span>
                 </div>
               </div>
@@ -260,28 +260,28 @@ export default function PublicationsCerts() {
                   onClick={() => setSelectedCert(isSelected ? null : idx)}
                   className={`editorial-card p-6 sm:p-7 rounded-3xl border transition-all flex flex-col justify-between space-y-4 group shadow-md cursor-pointer h-full ${
                     isSelected || cert.highlight
-                      ? 'border-blue-500/60 bg-[#161e31] ring-1 ring-blue-500/20 shadow-xl'
-                      : 'border-slate-800 hover:border-slate-700 bg-[#111726]'
+                      ? 'border-[#00f5ff]/60 bg-[#0c152a] ring-1 ring-[#00f5ff]/30 shadow-xl'
+                      : 'border-slate-800 hover:border-[#00f5ff]/30 bg-[#080e1c]/80'
                   }`}
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 group-hover:border-blue-400/60 transition-all shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-[#00f5ff] group-hover:border-[#00f5ff]/60 transition-all shadow-sm">
                         {cert.highlight ? <Bot className="w-5 h-5" /> : <Award className="w-5 h-5" />}
                       </div>
                       <span className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full font-bold border ${
                         cert.highlight
-                          ? 'bg-blue-950/80 text-blue-300 border-blue-500/40'
+                          ? 'bg-[#00f5ff]/15 text-[#00f5ff] border-[#00f5ff]/40'
                           : 'bg-slate-900 text-slate-300 border-slate-800'
                       }`}>
                         {cert.badge}
                       </span>
                     </div>
 
-                    <h4 className="text-base font-heading font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
+                    <h4 className="text-base font-heading font-bold text-white group-hover:text-[#00f5ff] transition-colors leading-snug">
                       {cert.title}
                     </h4>
-                    <p className="text-xs font-mono text-blue-400 font-semibold">{cert.issuer}</p>
+                    <p className="text-xs font-mono text-[#00f5ff] font-semibold">{cert.issuer}</p>
                     <p className="text-xs text-slate-300 leading-relaxed font-normal">{cert.desc}</p>
 
                     {/* Expandable Skills Tested Tags */}
@@ -292,7 +292,7 @@ export default function PublicationsCerts() {
                         </span>
                         <div className="flex flex-wrap gap-1">
                           {cert.skillsTested.map((st, sIdx) => (
-                            <span key={sIdx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-blue-300">
+                            <span key={sIdx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-[#00f5ff]">
                               {st}
                             </span>
                           ))}
@@ -302,11 +302,11 @@ export default function PublicationsCerts() {
                   </div>
 
                   <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
-                    <span className="flex items-center gap-1.5 text-emerald-400">
+                    <span className="flex items-center gap-1.5 text-[#00ff9d]">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       Verified Accreditation
                     </span>
-                    <span className="text-blue-400 flex items-center gap-0.5">
+                    <span className="text-[#00f5ff] flex items-center gap-0.5">
                       <span>{isSelected ? 'Less' : 'Details'}</span>
                       <ChevronRight className={`w-3 h-3 transition-transform ${isSelected ? 'rotate-90' : ''}`} />
                     </span>

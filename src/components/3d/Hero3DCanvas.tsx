@@ -33,7 +33,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
   const [activeBeacon, setActiveBeacon] = useState<BeaconData | null>(null);
   const [fps, setFps] = useState<number>(60);
 
-  // References to communicate with Three.js animation loop without re-triggering useEffect
+  // References for animation loop
   const stateRef = useRef({
     geometryMode: activeGeometryMode,
     wireframe: wireframeOnly,
@@ -51,7 +51,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       id: 'tosca',
       label: 'Tosca L2',
       sub: 'Tricentis Certified',
-      color: '#387bff',
+      color: '#00f5ff',
       icon: '🛡️',
       angle: 0,
       radius: 7.2,
@@ -62,7 +62,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       id: 'react',
       label: 'React 19 & Next.js',
       sub: 'Modern SSR Architecture',
-      color: '#10b981',
+      color: '#00ff9d',
       icon: '⚛️',
       angle: (Math.PI * 2) / 5,
       radius: 7.6,
@@ -95,7 +95,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       id: 'ieee',
       label: 'IEEE 10182947',
       sub: 'Deep Learning CNN',
-      color: '#f59e0b',
+      color: '#ffb020',
       icon: '📑',
       angle: ((Math.PI * 2) / 5) * 4,
       radius: 7.0,
@@ -128,9 +128,8 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     const height = container.clientHeight || 520;
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.35));
+    renderer.shadowMap.enabled = false;
     container.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
@@ -138,21 +137,21 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     camera.position.set(0, 2.5, 17.5);
     camera.lookAt(0, 0, 0);
 
-    // Dynamic Lights
-    const ambientLight = new THREE.AmbientLight(0x0f172a, 3.5);
+    // Dynamic Lights in Cyber Aurora Palette
+    const ambientLight = new THREE.AmbientLight(0x060c18, 3.5);
     scene.add(ambientLight);
 
-    const blueLight = new THREE.PointLight(0x387bff, 120, 30);
-    blueLight.position.set(8, 6, 8);
-    scene.add(blueLight);
+    const cyanLight = new THREE.PointLight(0x00f5ff, 140, 35);
+    cyanLight.position.set(8, 7, 8);
+    scene.add(cyanLight);
 
-    const emeraldLight = new THREE.PointLight(0x10b981, 90, 30);
-    emeraldLight.position.set(-8, -6, 6);
-    scene.add(emeraldLight);
+    const mintLight = new THREE.PointLight(0x00ff9d, 100, 30);
+    mintLight.position.set(-8, -6, 6);
+    scene.add(mintLight);
 
-    const purpleLight = new THREE.PointLight(0xa855f7, 100, 35);
-    purpleLight.position.set(0, 8, -6);
-    scene.add(purpleLight);
+    const violetLight = new THREE.PointLight(0xa855f7, 120, 35);
+    violetLight.position.set(0, 9, -6);
+    scene.add(violetLight);
 
     // Root 3D Object for Rotation
     const coreRoot = new THREE.Group();
@@ -162,11 +161,11 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     // 1A. Mode: Quantum Polyhedron (Icosahedron)
     const icoGeom = new THREE.IcosahedronGeometry(3.2, 1);
     const icoInnerMat = new THREE.MeshPhysicalMaterial({
-      color: 0x1e3a8a,
-      emissive: 0x1d4ed8,
-      emissiveIntensity: 0.4,
+      color: 0x07152c,
+      emissive: 0x00f5ff,
+      emissiveIntensity: 0.5,
       roughness: 0.1,
-      metalness: 0.8,
+      metalness: 0.85,
       transmission: 0.45,
       transparent: true,
       opacity: 0.85,
@@ -175,9 +174,9 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
 
     const icoWireGeom = new THREE.WireframeGeometry(icoGeom);
     const icoWireMat = new THREE.LineBasicMaterial({
-      color: 0x60a5fa,
+      color: 0x00f5ff,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.85,
       linewidth: 1,
     });
     const icoWireMesh = new THREE.LineSegments(icoWireGeom, icoWireMat);
@@ -187,10 +186,11 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     // 1B. Mode: Torus Knot
     const torusGeom = new THREE.TorusKnotGeometry(2.4, 0.7, 128, 24);
     const torusMat = new THREE.MeshStandardMaterial({
-      color: 0x387bff,
-      emissive: 0x1e1b4b,
-      roughness: 0.2,
-      metalness: 0.85,
+      color: 0x00f5ff,
+      emissive: 0x581c87,
+      emissiveIntensity: 0.4,
+      roughness: 0.15,
+      metalness: 0.9,
       wireframe: false,
     });
     const torusMesh = new THREE.Mesh(torusGeom, torusMat);
@@ -199,10 +199,10 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
 
     // 1C. Mode: Neural Constellation
     const neuralGroup = new THREE.Group();
-    const nodeCount = 50;
+    const nodeCount = 52;
     const neuralPositions: THREE.Vector3[] = [];
-    const neuralNodeGeom = new THREE.SphereGeometry(0.12, 16, 16);
-    const neuralNodeMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const neuralNodeGeom = new THREE.SphereGeometry(0.13, 16, 16);
+    const neuralNodeMat = new THREE.MeshBasicMaterial({ color: 0x00f5ff });
 
     for (let i = 0; i < nodeCount; i++) {
       const phi = Math.acos(-1 + (2 * i) / nodeCount);
@@ -235,9 +235,9 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     const lineGeom = new THREE.BufferGeometry();
     lineGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
     const lineMat = new THREE.LineBasicMaterial({
-      color: 0x387bff,
+      color: 0x00f5ff,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.55,
     });
     const neuralLines = new THREE.LineSegments(lineGeom, lineMat);
     neuralGroup.add(neuralLines);
@@ -254,14 +254,14 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
         color: color,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.55,
+        opacity: 0.65,
       });
       const ringMesh = new THREE.Mesh(ringGeom, ringMat);
       ringMesh.rotation.x = tiltX;
       ringMesh.rotation.y = tiltY;
 
       // Orbiting energy bead
-      const beadGeom = new THREE.SphereGeometry(0.18, 16, 16);
+      const beadGeom = new THREE.SphereGeometry(0.19, 16, 16);
       const beadMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
       const bead = new THREE.Mesh(beadGeom, beadMat);
       ringMesh.add(bead);
@@ -269,9 +269,9 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       return { mesh: ringMesh, bead, radius };
     };
 
-    const ring1 = createRing(5.2, 0x387bff, Math.PI / 3, 0); // Cobalt
-    const ring2 = createRing(6.2, 0x10b981, Math.PI / 2.3, Math.PI / 4); // Emerald
-    const ring3 = createRing(7.2, 0xa855f7, Math.PI / 1.7, -Math.PI / 3); // Violet
+    const ring1 = createRing(5.2, 0x00f5ff, Math.PI / 3, 0); // Cyber Cyan
+    const ring2 = createRing(6.2, 0x00ff9d, Math.PI / 2.3, Math.PI / 4); // Laser Mint
+    const ring3 = createRing(7.2, 0xa855f7, Math.PI / 1.7, -Math.PI / 3); // Hyper Violet
     ringGroup.add(ring1.mesh, ring2.mesh, ring3.mesh);
 
     // 3. Interactive Satellite Beacons
@@ -284,24 +284,24 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       bGroup.userData = { beaconData: b };
 
       // Sphere core
-      const bGeom = new THREE.SphereGeometry(0.45, 24, 24);
+      const bGeom = new THREE.SphereGeometry(0.48, 24, 24);
       const bMat = new THREE.MeshStandardMaterial({
         color: new THREE.Color(b.color),
         emissive: new THREE.Color(b.color),
-        emissiveIntensity: 0.6,
-        roughness: 0.2,
-        metalness: 0.7,
+        emissiveIntensity: 0.7,
+        roughness: 0.15,
+        metalness: 0.8,
       });
       const bSphere = new THREE.Mesh(bGeom, bMat);
       bGroup.add(bSphere);
 
       // Halo ring around beacon
-      const haloGeom = new THREE.RingGeometry(0.65, 0.75, 32);
+      const haloGeom = new THREE.RingGeometry(0.68, 0.8, 32);
       const haloMat = new THREE.MeshBasicMaterial({
         color: new THREE.Color(b.color),
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.85,
       });
       const halo = new THREE.Mesh(haloGeom, haloMat);
       halo.rotation.x = Math.PI / 2;
@@ -317,7 +317,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     });
 
     // 4. Shockwave Particle Emitter
-    const shockwaveCount = 120;
+    const shockwaveCount = 130;
     const shockGeom = new THREE.BufferGeometry();
     const shockPositions = new Float32Array(shockwaveCount * 3);
     const shockVelocities: THREE.Vector3[] = [];
@@ -330,14 +330,14 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
         (Math.random() - 0.5) * 2,
         (Math.random() - 0.5) * 2,
         (Math.random() - 0.5) * 2
-      ).normalize().multiplyScalar(Math.random() * 0.25 + 0.15);
+      ).normalize().multiplyScalar(Math.random() * 0.28 + 0.16);
       shockVelocities.push(vel);
     }
 
     shockGeom.setAttribute('position', new THREE.BufferAttribute(shockPositions, 3));
     const shockMat = new THREE.PointsMaterial({
-      color: 0x38bdf8,
-      size: 0.28,
+      color: 0x00f5ff,
+      size: 0.3,
       transparent: true,
       opacity: 0,
       blending: THREE.AdditiveBlending,
@@ -345,7 +345,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     const shockParticles = new THREE.Points(shockGeom, shockMat);
     scene.add(shockParticles);
 
-    // Mouse Interaction & Raycasting
+    // Mouse Interaction & Gaze Raycasting
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2(-999, -999);
     let isDragging = false;
@@ -353,17 +353,32 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     let prevMouseY = 0;
     let targetRotationX = 0;
     let targetRotationY = 0;
+    let mouseGazeX = 0;
+    let mouseGazeY = 0;
+
+    let cachedRect = container.getBoundingClientRect();
+    const updateRect = () => {
+      if (container) cachedRect = container.getBoundingClientRect();
+    };
+    container.addEventListener('mouseenter', updateRect, { passive: true });
+    window.addEventListener('resize', updateRect, { passive: true });
 
     const onPointerMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      const rect = cachedRect;
+      const normX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const normY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      mouse.x = normX;
+      mouse.y = normY;
+
+      // Realtime Gaze parallax
+      mouseGazeX = normX * 0.45;
+      mouseGazeY = normY * 0.35;
 
       if (isDragging) {
         const deltaX = e.clientX - prevMouseX;
         const deltaY = e.clientY - prevMouseY;
-        targetRotationY += deltaX * 0.006;
-        targetRotationX += deltaY * 0.006;
+        targetRotationY += deltaX * 0.007;
+        targetRotationX += deltaY * 0.007;
         prevMouseX = e.clientX;
         prevMouseY = e.clientY;
       }
@@ -476,20 +491,23 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       icoInnerMat.wireframe = isWire;
       torusMat.wireframe = isWire;
 
-      // Rotation & Drag Physics
+      // Rotation & Drag Physics + Cursor Gaze Tracking
       if (stateRef.current.rotating) {
         targetRotationY += 0.005;
         targetRotationX = Math.sin(elapsed * 0.5) * 0.15;
       }
 
-      // Smooth inertia lerp
-      coreRoot.rotation.y += (targetRotationY - coreRoot.rotation.y) * 0.08;
-      coreRoot.rotation.x += (targetRotationX - coreRoot.rotation.x) * 0.08;
+      // Smooth inertia lerp with cursor gaze influence
+      const finalTargetY = targetRotationY + mouseGazeX;
+      const finalTargetX = targetRotationX - mouseGazeY;
+
+      coreRoot.rotation.y += (finalTargetY - coreRoot.rotation.y) * 0.08;
+      coreRoot.rotation.x += (finalTargetX - coreRoot.rotation.x) * 0.08;
 
       // Orbit Beacons Rotation
       beaconGroup.rotation.y += 0.004;
       beaconMeshes.forEach(({ mesh }, idx) => {
-        mesh.rotation.y = -beaconGroup.rotation.y; // Keep beacons facing camera
+        mesh.rotation.y = -beaconGroup.rotation.y;
         mesh.position.y += Math.sin(elapsed * 2 + idx) * 0.004;
       });
 
@@ -548,9 +566,9 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
         shockMat.opacity = Math.max(0, 1.0 - shockProgress);
         const posAttr = shockGeom.getAttribute('position') as THREE.BufferAttribute;
         for (let i = 0; i < shockwaveCount; i++) {
-          const vx = shockVelocities[i].x * (shockProgress * 14);
-          const vy = shockVelocities[i].y * (shockProgress * 14);
-          const vz = shockVelocities[i].z * (shockProgress * 14);
+          const vx = shockVelocities[i].x * (shockProgress * 15);
+          const vy = shockVelocities[i].y * (shockProgress * 15);
+          const vz = shockVelocities[i].z * (shockProgress * 15);
           posAttr.setXYZ(i, vx, vy, vz);
         }
         posAttr.needsUpdate = true;
@@ -564,6 +582,8 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
     return () => {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
+      container.removeEventListener('mouseenter', updateRect);
+      window.removeEventListener('resize', updateRect);
       container.removeEventListener('mousemove', onPointerMove);
       container.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mouseup', onMouseUp);
@@ -572,7 +592,6 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       container.removeEventListener('touchmove', onTouchMove);
       container.removeEventListener('touchend', onTouchEnd);
 
-      // Disposal
       icoGeom.dispose();
       icoInnerMat.dispose();
       icoWireGeom.dispose();
@@ -594,24 +613,24 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
   }, [triggerShockwave, onSelectBeacon]);
 
   return (
-    <div className={`relative w-full h-[520px] rounded-3xl overflow-hidden editorial-card border border-blue-500/20 bg-[#080d1a]/80 shadow-2xl flex flex-col ${className}`}>
+    <div className={`relative w-full h-[520px] rounded-3xl overflow-hidden editorial-card border border-[#00f5ff]/25 bg-[#050914]/85 shadow-2xl flex flex-col ${className}`}>
       
       {/* Top Telemetry Header Bar */}
-      <div className="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-5 py-3.5 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 font-mono text-xs">
+      <div className="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-5 py-3.5 bg-[#03060f]/90 backdrop-blur-md border-b border-[#00f5ff]/15 font-mono text-xs">
         <div className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#00ff9d] animate-pulse"></span>
           <span className="text-white font-bold tracking-wider text-[11px]">
             CYBERNETIC 3D QUANTUM CORE
           </span>
-          <span className="text-slate-500 hidden sm:inline">// WEBGL ENGINE</span>
+          <span className="text-[#00f5ff]/60 hidden sm:inline">// AURORA ENGINE</span>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-[10px] text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-2 py-0.5 rounded-md font-semibold">
+          <span className="text-[10px] text-[#00ff9d] bg-[#00ff9d]/10 border border-[#00ff9d]/40 px-2 py-0.5 rounded-md font-semibold">
             {fps} FPS
           </span>
-          <span className="text-[10px] text-blue-400 bg-blue-950/60 border border-blue-800/80 px-2 py-0.5 rounded-md hidden sm:inline-block">
-            DRAG TO ROTATE 360°
+          <span className="text-[10px] text-[#00f5ff] bg-[#00f5ff]/10 border border-[#00f5ff]/30 px-2 py-0.5 rounded-md hidden sm:inline-block">
+            CURSOR REACTIVE // DRAG 360°
           </span>
         </div>
       </div>
@@ -620,32 +639,32 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
       <div
         ref={mountRef}
         className="w-full h-full cursor-grab active:cursor-grabbing select-none"
-        title="Click and drag to rotate the 3D core. Click floating beacons for inspection."
+        title="Move your cursor to guide 3D gaze. Click and drag to rotate 360°. Click floating beacons to inspect."
       />
 
       {/* Hovered / Selected Holographic HUD Overlay */}
       {(hoveredBeacon || activeBeacon) && (
-        <div className="absolute top-16 left-5 right-5 sm:right-auto sm:max-w-xs z-20 p-3.5 rounded-2xl bg-slate-950/90 backdrop-blur-xl border border-blue-500/40 shadow-2xl space-y-1.5 animate-in fade-in zoom-in-95 duration-200">
+        <div className="absolute top-16 left-5 right-5 sm:right-auto sm:max-w-xs z-20 p-3.5 rounded-2xl bg-[#030712]/95 backdrop-blur-xl border border-[#00f5ff]/40 shadow-2xl space-y-1.5 animate-in fade-in zoom-in-95 duration-200">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
               <span>{(hoveredBeacon || activeBeacon)?.icon}</span>
               <span>{(hoveredBeacon || activeBeacon)?.label}</span>
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/60">
+            <span className="text-[10px] font-mono text-[#00ff9d] font-semibold bg-[#00ff9d]/10 px-2 py-0.5 rounded border border-[#00ff9d]/40">
               ACTIVE NODE
             </span>
           </div>
           <p className="text-[11px] font-mono text-slate-300">
             {(hoveredBeacon || activeBeacon)?.sub}
           </p>
-          <div className="pt-1 border-t border-slate-800/80 text-[10px] font-mono text-blue-400 font-medium">
+          <div className="pt-1 border-t border-slate-800/80 text-[10px] font-mono text-[#00f5ff] font-medium">
             🎯 {(hoveredBeacon || activeBeacon)?.metric}
           </div>
         </div>
       )}
 
       {/* Interactive Controls Overlay Bar */}
-      <div className="absolute bottom-3 inset-x-3 sm:inset-x-5 z-20 flex flex-wrap items-center justify-between gap-2 p-2 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-slate-800/80">
+      <div className="absolute bottom-3 inset-x-3 sm:inset-x-5 z-20 flex flex-wrap items-center justify-between gap-2 p-2 rounded-2xl bg-[#030712]/90 backdrop-blur-md border border-[#00f5ff]/20">
         
         {/* Geometry Mode Selector */}
         <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800 font-mono text-[11px]">
@@ -656,7 +675,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
             }}
             className={`px-2.5 py-1 rounded-lg transition-all ${
               activeGeometryMode === 'core'
-                ? 'bg-blue-600 text-white font-bold shadow'
+                ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -669,7 +688,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
             }}
             className={`px-2.5 py-1 rounded-lg transition-all ${
               activeGeometryMode === 'neural'
-                ? 'bg-blue-600 text-white font-bold shadow'
+                ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -682,7 +701,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
             }}
             className={`px-2.5 py-1 rounded-lg transition-all ${
               activeGeometryMode === 'torus'
-                ? 'bg-blue-600 text-white font-bold shadow'
+                ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -694,10 +713,10 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
         <div className="flex items-center gap-1.5 font-mono text-[11px]">
           <button
             onClick={triggerShockwave}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-white border border-blue-700/60 transition-all font-semibold"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#00f5ff]/15 hover:bg-[#00f5ff]/25 text-[#00f5ff] hover:text-white border border-[#00f5ff]/40 transition-all font-semibold shadow-sm"
             title="Fire a 3D particle shockwave pulse"
           >
-            <Zap className="w-3.5 h-3.5 text-blue-400" />
+            <Zap className="w-3.5 h-3.5 text-[#00f5ff]" />
             <span className="hidden sm:inline">Energy</span> Pulse
           </button>
 
@@ -708,7 +727,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
             }}
             className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border transition-all ${
               wireframeOnly
-                ? 'bg-blue-600 border-blue-500 text-white'
+                ? 'bg-[#00f5ff] border-[#00f5ff] text-slate-950 font-bold'
                 : 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
             }`}
             title="Toggle wireframe mode"
@@ -725,7 +744,7 @@ export default function Hero3DCanvas({ onSelectBeacon, className = '' }: Hero3DC
             className="p-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition-all"
             title={isRotating ? 'Pause rotation' : 'Resume rotation'}
           >
-            {isRotating ? <Pause className="w-3.5 h-3.5" /> : <RotateCw className="w-3.5 h-3.5" />}
+            {isRotating ? <Pause className="w-3.5 h-3.5" /> : <RotateCw className="w-3.5 h-3.5 text-[#00f5ff]" />}
           </button>
         </div>
 

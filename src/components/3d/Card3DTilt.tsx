@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef } from 'react';
 
 interface Card3DTiltProps {
   children: React.ReactNode;
   className?: string;
-  maxTilt?: number; // Maximum tilt angle in degrees (default 12)
+  maxTilt?: number; // Maximum tilt angle in degrees (default 10)
   perspective?: number; // Perspective distance (default 1000)
   scale?: number; // Scale on hover (default 1.02)
   glare?: boolean; // Enable specular glare overlay (default true)
@@ -14,67 +14,56 @@ interface Card3DTiltProps {
 export default function Card3DTilt({
   children,
   className = '',
-  maxTilt = 10,
+  maxTilt = 8,
   perspective = 1000,
   scale = 1.02,
   glare = true,
 }: Card3DTiltProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [transformStyle, setTransformStyle] = useState<string>('');
-  const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const glareRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const width = rect.width;
-      const height = rect.height;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
 
-      // Calculate tilt angles (-0.5 to 0.5 range)
-      const xRatio = (x / width) - 0.5;
-      const yRatio = (y / height) - 0.5;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const width = rect.width;
+    const height = rect.height;
 
-      const rotateY = xRatio * maxTilt * 2;
-      const rotateX = -yRatio * maxTilt * 2;
+    const xRatio = x / width - 0.5;
+    const yRatio = y / height - 0.5;
 
-      setTransformStyle(
-        `perspective(${perspective}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`
-      );
+    const rotateY = xRatio * maxTilt * 2;
+    const rotateX = -yRatio * maxTilt * 2;
 
-      if (glare) {
-        setGlarePos({
-          x: (x / width) * 100,
-          y: (y / height) * 100,
-          opacity: 0.18,
-        });
-      }
-    },
-    [maxTilt, perspective, scale, glare]
-  );
+    // Mutate DOM styles directly for maximum 120 FPS performance with 0 React renders
+    card.style.transform = `perspective(${perspective}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`;
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+    if (glare && glareRef.current) {
+      glareRef.current.style.opacity = '0.18';
+      glareRef.current.style.background = `radial-gradient(circle 320px at ${(x / width) * 100}% ${(y / height) * 100}%, rgba(255, 255, 255, 0.25), transparent 70%)`;
+    }
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTransformStyle(`perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
-    setGlarePos((prev) => ({ ...prev, opacity: 0 }));
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+
+    if (glare && glareRef.current) {
+      glareRef.current.style.opacity = '0';
+    }
   };
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`relative transition-transform duration-200 ease-out will-change-transform ${className}`}
       style={{
-        transform: transformStyle,
         transformStyle: 'preserve-3d',
       }}
     >
@@ -83,11 +72,8 @@ export default function Card3DTilt({
       {/* Dynamic Specular 3D Glare */}
       {glare && (
         <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300 z-30 overflow-hidden"
-          style={{
-            opacity: isHovered ? glarePos.opacity : 0,
-            background: `radial-gradient(circle 350px at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.22), transparent 70%)`,
-          }}
+          ref={glareRef}
+          className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300 z-30 overflow-hidden opacity-0 will-change-[opacity,background]"
         />
       )}
     </div>

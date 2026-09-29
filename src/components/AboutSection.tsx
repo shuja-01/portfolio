@@ -84,9 +84,9 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
           
           {/* Left Narrative Column (Cols 1-7) */}
-          <div className="lg:col-span-7 editorial-card p-8 sm:p-10 rounded-3xl border border-slate-800 space-y-6 bg-[#111726] shadow-xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-blue-400 uppercase tracking-wider font-semibold">
-              <Sparkles className="w-3.5 h-3.5" />
+          <div className="lg:col-span-7 editorial-card p-8 sm:p-10 rounded-3xl border border-[#00f5ff]/20 space-y-6 bg-[#080e1c]/85 shadow-xl">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#00f5ff] uppercase tracking-wider font-semibold">
+              <Sparkles className="w-3.5 h-3.5 text-[#00f5ff]" />
               <span>THE ENGINEERING PHILOSOPHY</span>
             </div>
 
@@ -96,7 +96,7 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
 
             <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               <p>
-                Based in <strong className="text-white">Kuala Lumpur, Malaysia</strong>, I serve as a Process Automation Engineer consultant at <strong className="text-blue-400 font-semibold">Capgemini</strong>. My work focuses on building robust automated regression testing frameworks, REST API validation suites, and AI-driven document intelligence systems for enterprise operations.
+                Based in <strong className="text-white">Kuala Lumpur, Malaysia</strong>, I serve as a Process Automation Engineer consultant at <strong className="text-[#00f5ff] font-semibold">Capgemini</strong>. My work focuses on building robust automated regression testing frameworks, REST API validation suites, and AI-driven document intelligence systems for enterprise operations.
               </p>
               <p>
                 Prior to Capgemini, I served as <strong className="text-white">Technology Lead at Torn &amp; Stitched</strong>, where I directed Shopify Liquid frontend architecture and optimized web performance. Earlier in my career at <strong className="text-white">Newgen Software</strong>, I developed Java enterprise applications and integrated complex relational database schemas for Middle East banking and enterprise clients.
@@ -109,7 +109,7 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
             {/* Academic & Professional Badges */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800/80 font-mono text-xs">
               <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
-                <GraduationCap className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                <GraduationCap className="w-5 h-5 text-[#00f5ff] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-white font-bold block">GCET Engineering</span>
                   <span className="text-slate-400 text-[11px]">B.Tech in Electrical Engineering</span>
@@ -117,7 +117,7 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
               </div>
 
               <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
-                <Briefcase className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <Briefcase className="w-5 h-5 text-[#00ff9d] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-white font-bold block">Capgemini Malaysia</span>
                   <span className="text-slate-400 text-[11px]">Process Automation Consultant</span>
@@ -129,7 +129,7 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
               {onOpenResume && (
                 <button
                   onClick={onOpenResume}
-                  className="flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold transition-all shadow-md bg-blue-600 hover:bg-blue-500 text-white hover:scale-[1.02]"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold transition-all shadow-md shadow-[#00f5ff]/25 bg-[#00f5ff] hover:bg-[#00e1eb] text-slate-950 hover:scale-[1.02]"
                 >
                   <FileText className="w-4 h-4" />
                   <span>Open Full Profile PDF</span>
@@ -140,9 +140,9 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
                 href="https://www.linkedin.com/in/mshuja-rizvi/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-200 hover:text-blue-400 hover:bg-slate-800 shadow-sm"
+                className="flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-200 hover:text-[#00f5ff] hover:bg-slate-800 shadow-sm"
               >
-                <LinkedinIcon className="w-4 h-4 text-blue-400" />
+                <LinkedinIcon className="w-4 h-4 text-[#00f5ff]" />
                 <span>LinkedIn Connect</span>
               </a>
             </div>
@@ -152,13 +152,13 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Peer-Reviewed Publication Spotlight Card */}
-            <div className="editorial-card p-6 sm:p-7 rounded-3xl border border-slate-800 bg-[#111726] space-y-4 shadow-xl">
+            <div className="editorial-card p-6 sm:p-7 rounded-3xl border border-[#00f5ff]/20 bg-[#080e1c]/85 space-y-4 shadow-xl">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-blue-400 font-semibold flex items-center gap-1.5">
-                  <GraduationCap className="w-4 h-4" />
+                <span className="text-xs font-mono text-[#00f5ff] font-semibold flex items-center gap-1.5">
+                  <GraduationCap className="w-4 h-4 text-[#00f5ff]" />
                   <span>IEEE RESEARCH PUBLICATION</span>
                 </span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#00ff9d]/10 border border-[#00ff9d]/30 text-[#00ff9d] font-bold">
                   PEER REVIEWED
                 </span>
               </div>
@@ -168,10 +168,10 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
                   href="https://ieeexplore.ieee.org/document/10182947"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors inline-flex items-center gap-1.5"
+                  className="hover:text-[#00f5ff] transition-colors inline-flex items-center gap-1.5"
                 >
                   <span>&quot;A Review On: Deep Learning Model For Skin Lesion Classification Using Imbalance Dataset&quot;</span>
-                  <ExternalLink className="w-4 h-4 text-blue-400 shrink-0" />
+                  <ExternalLink className="w-4 h-4 text-[#00f5ff] shrink-0" />
                 </a>
               </h4>
 
@@ -185,7 +185,7 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
                   href="https://ieeexplore.ieee.org/document/10182947"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:underline inline-flex items-center gap-1 font-semibold"
+                  className="text-[#00f5ff] hover:underline inline-flex items-center gap-1 font-semibold"
                 >
                   <span>View on IEEE</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -194,8 +194,8 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
             </div>
 
             {/* Core Value Propositions with Interactive Focus */}
-            <div className="editorial-card p-6 rounded-3xl border border-slate-800 bg-[#111726] space-y-4 shadow-xl">
-              <span className="text-xs font-mono text-blue-400 uppercase tracking-wider block font-semibold">
+            <div className="editorial-card p-6 rounded-3xl border border-[#00f5ff]/20 bg-[#080e1c]/85 space-y-4 shadow-xl">
+              <span className="text-xs font-mono text-[#00f5ff] uppercase tracking-wider block font-semibold">
                 // PROVEN VALUE DELIVERED
               </span>
 
@@ -206,12 +206,12 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
                   { label: 'API Security Token Compliance', value: '100%', metric: 'JWT & REST Assured' },
                   { label: 'AI Document Extraction Speed', value: '75%', metric: 'Claude Code Agentic Pipeline' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/40 transition-colors">
+                  <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-[#00f5ff]/50 transition-colors">
                     <div>
                       <span className="text-slate-200 text-xs font-medium block">{item.label}</span>
                       <span className="text-slate-500 text-[10px] block">{item.metric}</span>
                     </div>
-                    <span className="text-emerald-400 font-bold text-sm font-mono">{item.value}</span>
+                    <span className="text-[#00ff9d] font-bold text-sm font-mono">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -223,10 +223,10 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
         {/* 4 Interactive Domain Cards Grid */}
         <div className="space-y-4">
           <div className="flex items-center justify-between font-mono text-xs">
-            <span className="text-blue-400 uppercase tracking-wider font-semibold">
+            <span className="text-[#00f5ff] uppercase tracking-wider font-semibold">
               // CORE DOMAIN SPECIALTIES (CLICK TO EXPLORE ARCHITECTURE HIGHLIGHT)
             </span>
-            <span className="text-slate-500 text-[11px]">Active Focus: {domains[selectedDomain].title}</span>
+            <span className="text-slate-400 text-[11px]">Active Focus: {domains[selectedDomain].title}</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -238,23 +238,23 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
                     onClick={() => setSelectedDomain(idx)}
                     className={`editorial-card p-6 rounded-3xl border transition-all flex flex-col justify-between space-y-4 group cursor-pointer shadow-md h-full ${
                       isSelected
-                        ? 'border-blue-500/60 bg-[#161e31] ring-1 ring-blue-500/30 shadow-xl scale-[1.01]'
-                        : 'border-slate-800 hover:border-slate-700 bg-[#111726]'
+                        ? 'border-[#00f5ff]/60 bg-[#0c152a] ring-1 ring-[#00f5ff]/30 shadow-xl scale-[1.01]'
+                        : 'border-slate-800 hover:border-[#00f5ff]/30 bg-[#080e1c]/80'
                     }`}
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
-                          isSelected ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-900 border border-slate-800 text-blue-400'
+                          isSelected ? 'bg-[#00f5ff] text-slate-950 shadow-md shadow-[#00f5ff]/25' : 'bg-slate-900 border border-slate-800 text-[#00f5ff]'
                         }`}>
                           <dom.icon className="w-5 h-5" />
                         </div>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-emerald-400 font-bold">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-[#00ff9d] font-bold">
                           {dom.metric}
                         </span>
                       </div>
 
-                      <h4 className="text-base font-heading font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
+                      <h4 className="text-base font-heading font-bold text-white group-hover:text-[#00f5ff] transition-colors leading-snug">
                         {dom.title}
                       </h4>
                       <p className="text-xs text-slate-300 leading-relaxed font-normal">{dom.desc}</p>
@@ -273,7 +273,7 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
                       </div>
 
                       {isSelected && (
-                        <p className="text-[11px] font-mono text-blue-300 pt-1 leading-snug animate-in fade-in duration-150">
+                        <p className="text-[11px] font-mono text-[#00f5ff] pt-1 leading-snug animate-in fade-in duration-150">
                           ⚡ {dom.architectureHighlight}
                         </p>
                       )}

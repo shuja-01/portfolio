@@ -151,11 +151,11 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative min-h-[92vh] pt-32 pb-20 flex items-center justify-center overflow-hidden telemetry-grid bg-[var(--bg-canvas)]">
+    <section id="hero" className="relative min-h-[92vh] pt-32 pb-20 flex items-center justify-center overflow-hidden telemetry-grid bg-[var(--bg-canvas)]">
       
       {/* Background Ambient Glows */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none animate-ambient-pulse" />
-      <div className="absolute top-1/2 -right-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none animate-ambient-pulse" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#00f5ff]/15 rounded-full blur-3xl pointer-events-none animate-ambient-pulse" />
+      <div className="absolute top-1/2 -right-40 w-96 h-96 bg-[#a855f7]/15 rounded-full blur-3xl pointer-events-none animate-ambient-pulse" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -164,18 +164,18 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
           <div className="lg:col-span-7 space-y-8 text-left">
             
             {/* Live Status Pill with Interactive Ping */}
-            <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full editorial-card bg-slate-900/90 shadow-sm text-xs font-mono">
-              <span className="flex items-center gap-1.5 text-blue-400 font-bold">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-beacon"></span>
+            <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full editorial-card bg-slate-900/90 border border-[#00f5ff]/20 shadow-sm text-xs font-mono">
+              <span className="flex items-center gap-1.5 text-[#00f5ff] font-bold">
+                <span className="w-2 h-2 rounded-full bg-[#00ff9d] animate-beacon"></span>
                 <span>CAPGEMINI MALAYSIA</span>
               </span>
               <span className="text-slate-500">// CONSULTANT</span>
               <button
                 onClick={triggerPipelineRun}
-                className="flex items-center gap-1 text-slate-200 hover:text-emerald-400 font-medium px-2 py-0.5 rounded-md bg-slate-950 border border-slate-800 text-[10px] transition-colors"
+                className="flex items-center gap-1 text-slate-200 hover:text-[#00ff9d] font-medium px-2 py-0.5 rounded-md bg-slate-950 border border-slate-800 text-[10px] transition-colors"
                 title="Click to simulate live pipeline packet"
               >
-                <Activity className="w-3 h-3 text-emerald-400" />
+                <Activity className="w-3 h-3 text-[#00ff9d]" />
                 <span>PING: {liveLatency}ms (CLICK TO RUN)</span>
               </button>
             </div>
@@ -185,22 +185,22 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
               <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-heading font-extrabold tracking-tight text-white leading-[1.12]">
                 {activeLens === 'all' && (
                   <>
-                    Architecting <span className="gradient-text-cobalt">Process Automation</span>, Modern <span className="gradient-text-emerald">Frontend Systems</span> &amp; <span className="gradient-text-purple">AI Workflows</span>
+                    Architecting <span className="gradient-text-cyber">Process Automation</span>, Modern <span className="gradient-text-aurora">Frontend Systems</span> &amp; <span className="gradient-text-purple">AI Workflows</span>
                   </>
                 )}
                 {activeLens === 'frontend' && (
                   <>
-                    Crafting <span className="gradient-text-cobalt">High-Performance</span> React 19 &amp; <span className="gradient-text-emerald">Modern Web Architecture</span>
+                    Crafting <span className="gradient-text-cyber">High-Performance</span> React 19 &amp; <span className="gradient-text-aurora">Modern Web Architecture</span>
                   </>
                 )}
                 {activeLens === 'automation' && (
                   <>
-                    Zero-Defect <span className="gradient-text-cobalt">Enterprise Test Automation</span> &amp; <span className="gradient-text-emerald">REST API Engineering</span>
+                    Zero-Defect <span className="gradient-text-cyber">Enterprise Test Automation</span> &amp; <span className="gradient-text-aurora">REST API Engineering</span>
                   </>
                 )}
                 {activeLens === 'ai' && (
                   <>
-                    Integrating <span className="gradient-text-purple">Autonomous AI Agents</span> &amp; <span className="gradient-text-cobalt">Intelligent Pipelines</span>
+                    Integrating <span className="gradient-text-purple">Autonomous AI Agents</span> &amp; <span className="gradient-text-cyber">Intelligent Pipelines</span>
                   </>
                 )}
               </h1>
@@ -214,11 +214,11 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
             {/* Interactive Architectural Lens Selector */}
             <div className="space-y-3 pt-1">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono text-blue-400 uppercase tracking-wider font-semibold">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#00f5ff] uppercase tracking-wider font-semibold">
                   <Layers className="w-3.5 h-3.5" />
                   <span>Select Architectural Perspective:</span>
                 </div>
-                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800/60 font-semibold">
+                <span className="text-[11px] font-mono text-[#00ff9d] bg-[#00ff9d]/10 px-2 py-0.5 rounded border border-[#00ff9d]/30 font-semibold">
                   {currentLens.highlightMetric}
                 </span>
               </div>
@@ -235,12 +235,12 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
                     onClick={() => setActiveLens(lens.key as any)}
                     className={`px-3.5 py-2 rounded-xl transition-all duration-200 flex items-center gap-1.5 ${
                       activeLens === lens.key
-                        ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/25 ring-1 ring-blue-400 scale-[1.02]'
+                        ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-lg shadow-[#00f5ff]/25 scale-[1.02]'
                         : 'editorial-card text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800'
                     }`}
                   >
                     <span>{lens.label}</span>
-                    {activeLens === lens.key && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>}
+                    {activeLens === lens.key && <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse"></span>}
                   </button>
                 ))}
               </div>
@@ -253,7 +253,7 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
                   key={idx}
                   className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 shadow-sm"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00f5ff]"></span>
                   <span className="font-medium text-[11px]">{pill}</span>
                 </div>
               ))}
@@ -265,24 +265,24 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
                 href="https://www.linkedin.com/in/mshuja-rizvi/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-bold transition-all shadow-lg shadow-blue-600/30 bg-blue-600 hover:bg-blue-500 text-white hover:scale-[1.02]"
+                className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-bold transition-all shadow-lg shadow-[#00f5ff]/25 bg-[#00f5ff] hover:bg-[#00e1eb] text-slate-950 hover:scale-[1.02]"
               >
-                <LinkedinIcon className="w-4 h-4 text-white" />
+                <LinkedinIcon className="w-4 h-4 text-slate-950" />
                 <span>Connect on LinkedIn</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
               <button
                 onClick={onOpenResume}
-                className="flex items-center gap-2 px-5 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-700 text-slate-100 hover:bg-slate-800 shadow-sm hover:scale-[1.02]"
+                className="flex items-center gap-2 px-5 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-[#00f5ff]/30 text-slate-100 hover:bg-slate-800 hover:border-[#00f5ff] shadow-sm hover:scale-[1.02]"
               >
-                <FileText className="w-4 h-4 text-blue-400" />
+                <FileText className="w-4 h-4 text-[#00f5ff]" />
                 <span>View Profile PDF</span>
               </button>
 
               <a
                 href="#projects"
-                className="flex items-center gap-2 px-5 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white shadow-sm"
+                className="flex items-center gap-2 px-5 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-[#00f5ff] shadow-sm"
               >
                 <Terminal className="w-4 h-4 text-slate-400" />
                 <span>Run Sandbox</span>
@@ -301,22 +301,22 @@ export default function HeroSection({ onOpenResume }: HeroSectionProps) {
                   onClick={() => setRightDeckMode('3d-core')}
                   className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 font-bold ${
                     rightDeckMode === '3d-core'
-                      ? 'bg-blue-600 text-white shadow-md ring-1 ring-blue-400'
+                      ? 'bg-[#00f5ff] text-slate-950 shadow-md shadow-[#00f5ff]/25'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-blue-300" />
+                  <Sparkles className="w-3.5 h-3.5 text-slate-950" />
                   <span>3D Cyber Core</span>
                 </button>
                 <button
                   onClick={() => setRightDeckMode('telemetry')}
                   className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 font-bold ${
                     rightDeckMode === 'telemetry'
-                      ? 'bg-blue-600 text-white shadow-md ring-1 ring-blue-400'
+                      ? 'bg-[#00f5ff] text-slate-950 shadow-md shadow-[#00f5ff]/25'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  <Activity className="w-3.5 h-3.5 text-emerald-400" />
+                  <Activity className="w-3.5 h-3.5 text-slate-950" />
                   <span>Telemetry Deck</span>
                 </button>
               </div>

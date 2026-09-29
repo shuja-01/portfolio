@@ -168,12 +168,12 @@ export default function SkillsMatrix() {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-4 mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-400 shadow-sm font-semibold">
-            <Layout className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-[#00f5ff]/30 text-xs font-mono text-[#00f5ff] shadow-sm font-semibold">
+            <Layout className="w-3.5 h-3.5 text-[#00f5ff]" />
             <span>FULL-STACK &amp; AUTOMATION MATRIX</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
-            Technical Capabilities &amp; <span className="gradient-text-cobalt">3D Stack Sphere</span>
+            Technical Capabilities &amp; <span className="gradient-text-cyber">3D Stack Sphere</span>
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
             Explore Shuja&apos;s competencies across modern React 19/Next.js frontend development, enterprise process automation, Claude Code AI agents, and API security.
@@ -186,22 +186,22 @@ export default function SkillsMatrix() {
                 onClick={() => setViewMode('3d-sphere')}
                 className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 font-bold ${
                   viewMode === '3d-sphere'
-                    ? 'bg-blue-600 text-white shadow-md ring-1 ring-blue-400 scale-[1.02]'
+                    ? 'bg-[#00f5ff] text-slate-950 shadow-md shadow-[#00f5ff]/25 scale-[1.02]'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <Compass className="w-4 h-4 text-sky-300 animate-spin" />
+                <Compass className="w-4 h-4 text-slate-950 animate-spin" />
                 <span>3D Holographic Sphere</span>
               </button>
               <button
                 onClick={() => setViewMode('matrix')}
                 className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 font-bold ${
                   viewMode === 'matrix'
-                    ? 'bg-blue-600 text-white shadow-md ring-1 ring-blue-400 scale-[1.02]'
+                    ? 'bg-[#00f5ff] text-slate-950 shadow-md shadow-[#00f5ff]/25 scale-[1.02]'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <Layers className="w-4 h-4 text-emerald-400" />
+                <Layers className="w-4 h-4 text-slate-950" />
                 <span>Capabilities Grid</span>
               </button>
             </div>
@@ -225,7 +225,7 @@ export default function SkillsMatrix() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`px-3.5 py-1.5 rounded-xl border transition-all ${
                     activeCategory === cat.id
-                      ? 'bg-blue-600 border-blue-400 text-white font-bold shadow-md'
+                      ? 'bg-[#00f5ff] border-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                       : 'bg-slate-900/80 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
@@ -248,11 +248,11 @@ export default function SkillsMatrix() {
         {/* ========================================================================= */}
         {/* INTERACTIVE STACK MIXER & ARCHITECTURE GENERATOR WIDGET */}
         {/* ========================================================================= */}
-        <div className="editorial-card p-6 sm:p-8 rounded-3xl border border-slate-800 bg-[#111726] shadow-2xl mb-16 space-y-6">
+        <div className="editorial-card p-6 sm:p-8 rounded-3xl border border-[#00f5ff]/20 bg-[#080e1c]/85 shadow-2xl mb-16 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400">
-                <Sparkles className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-[#00f5ff]/15 border border-[#00f5ff]/40 flex items-center justify-center text-[#00f5ff]">
+                <Sparkles className="w-5 h-5 text-[#00f5ff]" />
               </div>
               <div>
                 <h3 className="text-lg font-heading font-bold text-white leading-snug">
@@ -263,7 +263,7 @@ export default function SkillsMatrix() {
                 </span>
               </div>
             </div>
-            <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/80 font-bold self-start sm:self-auto">
+            <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#00ff9d]/10 text-[#00ff9d] border border-[#00ff9d]/30 font-bold self-start sm:self-auto">
               {recipe.impactBadge}
             </span>
           </div>
@@ -283,12 +283,12 @@ export default function SkillsMatrix() {
                     onClick={() => toggleMixerTech(tech)}
                     className={`px-3 py-1.5 rounded-xl font-mono text-xs transition-all flex items-center gap-1.5 ${
                       isSelected
-                        ? 'bg-blue-600 text-white font-bold shadow-md ring-1 ring-blue-400 scale-[1.02]'
+                        ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25 scale-[1.02]'
                         : 'bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     <span>{tech}</span>
-                    {isSelected && <Check className="w-3.5 h-3.5" />}
+                    {isSelected && <Check className="w-3.5 h-3.5 text-slate-950" />}
                   </button>
                 );
               })}
@@ -297,7 +297,7 @@ export default function SkillsMatrix() {
 
           {/* Generated Recipe Blueprint */}
           <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 font-mono text-xs">
-            <div className="flex items-center gap-2 text-blue-400 font-bold">
+            <div className="flex items-center gap-2 text-[#00f5ff] font-bold">
               <Zap className="w-4 h-4 text-amber-400" />
               <span className="uppercase text-sm font-heading">{recipe.title}</span>
             </div>
@@ -307,7 +307,7 @@ export default function SkillsMatrix() {
             <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-900">
               {selectedMixerTechs.map((t, idx) => (
                 <span key={idx} className="text-[11px] px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">
-                  <span className="text-blue-400 font-bold">{idx + 1}.</span> {t}
+                  <span className="text-[#00f5ff] font-bold">{idx + 1}.</span> {t}
                 </span>
               ))}
             </div>
@@ -342,7 +342,7 @@ export default function SkillsMatrix() {
                 onClick={() => setActiveCategory('all')}
                 className={`px-3.5 py-1.5 rounded-xl transition-all ${
                   activeCategory === 'all'
-                    ? 'bg-blue-600 text-white font-bold shadow-md'
+                    ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                     : 'editorial-card text-slate-300 hover:text-white bg-slate-900/60'
                 }`}
               >
@@ -354,7 +354,7 @@ export default function SkillsMatrix() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-all ${
                     activeCategory === cat.id
-                      ? 'bg-blue-600 text-white font-bold shadow-md'
+                      ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                       : 'editorial-card text-slate-300 hover:text-white bg-slate-900/60'
                   }`}
                 >
@@ -369,7 +369,7 @@ export default function SkillsMatrix() {
               onClick={() => setMinMastery(minMastery === 0 ? 90 : 0)}
               className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs ${
                 minMastery > 0
-                  ? 'bg-emerald-600 text-white font-bold shadow-md'
+                  ? 'bg-[#00ff9d] text-slate-950 font-bold shadow-md shadow-[#00ff9d]/25'
                   : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -381,11 +381,11 @@ export default function SkillsMatrix() {
 
         {/* Skills Cards Grid */}
         {filteredCategories.length === 0 ? (
-          <div className="editorial-card p-12 rounded-3xl text-center space-y-3 max-w-md mx-auto bg-[#111726]">
+          <div className="editorial-card p-12 rounded-3xl text-center space-y-3 max-w-md mx-auto bg-[#080e1c]/85 border border-[#00f5ff]/20">
             <p className="text-slate-400 text-sm font-mono">No matching skills found for &quot;{searchQuery}&quot;</p>
             <button
               onClick={() => { setSearchQuery(''); setActiveCategory('all'); setMinMastery(0); }}
-              className="text-xs font-mono text-blue-400 underline font-semibold"
+              className="text-xs font-mono text-[#00f5ff] underline font-semibold"
             >
               Reset Search Filters
             </button>
@@ -395,12 +395,12 @@ export default function SkillsMatrix() {
             {filteredCategories.map((cat) => (
               <div
                 key={cat.id}
-                className="editorial-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6 flex flex-col justify-between bg-[#111726] shadow-xl"
+                className="editorial-card p-6 sm:p-8 rounded-3xl border border-[#00f5ff]/20 space-y-6 flex flex-col justify-between bg-[#080e1c]/85 shadow-xl"
               >
                 <div className="space-y-6">
                   {/* Category Header */}
                   <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4">
-                    <div className="w-11 h-11 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 shadow-sm">
+                    <div className="w-11 h-11 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-[#00f5ff] shadow-sm">
                       <cat.icon className="w-5.5 h-5.5" />
                     </div>
                     <div>
@@ -414,16 +414,16 @@ export default function SkillsMatrix() {
                     {cat.skills.map((skill, sIdx) => (
                       <div key={sIdx} className="space-y-2 group">
                         <div className="flex items-center justify-between text-xs font-semibold">
-                          <span className="text-slate-100 font-sans font-medium group-hover:text-blue-400 transition-colors">
+                          <span className="text-slate-100 font-sans font-medium group-hover:text-[#00f5ff] transition-colors">
                             {skill.name}
                           </span>
-                          <span className="text-blue-400 font-mono text-xs font-bold">{skill.level}%</span>
+                          <span className="text-[#00f5ff] font-mono text-xs font-bold">{skill.level}%</span>
                         </div>
 
                         {/* Skill Level Progress Bar */}
                         <div className="w-full h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800 p-[1px]">
                           <div
-                            className="h-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 rounded-full transition-all duration-1000"
+                            className="h-full bg-gradient-to-r from-[#00f5ff] via-[#38bdf8] to-[#00ff9d] rounded-full transition-all duration-1000"
                             style={{ width: `${skill.level}%` }}
                           />
                         </div>
@@ -431,7 +431,7 @@ export default function SkillsMatrix() {
                         {/* Skill Highlight & Tags */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-0.5 font-mono">
                           <span className="text-[11px] text-slate-400 flex items-center gap-1">
-                            <span className="text-emerald-400 font-bold">✓</span> {skill.highlight}
+                            <span className="text-[#00ff9d] font-bold">✓</span> {skill.highlight}
                           </span>
 
                           <div className="flex flex-wrap gap-1 ml-auto">
@@ -450,7 +450,7 @@ export default function SkillsMatrix() {
                   </div>
                 </div>
 
-                <div className="pt-5 border-t border-slate-800/60 text-xs font-mono text-emerald-400 flex items-center justify-between font-semibold">
+                <div className="pt-5 border-t border-slate-800/60 text-xs font-mono text-[#00ff9d] flex items-center justify-between font-semibold">
                   <span className="flex items-center gap-1.5">
                     <Check className="w-4 h-4" />
                     <span>Industry &amp; Production Proven</span>

@@ -447,12 +447,12 @@ export class CheckoutPipeline {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-400 shadow-sm font-semibold">
-            <TerminalIcon className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-[#00f5ff]/30 text-xs font-mono text-[#00f5ff] shadow-sm font-semibold">
+            <TerminalIcon className="w-3.5 h-3.5 text-[#00f5ff]" />
             <span>INTERACTIVE ENGINEERING WORKBENCH</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
-            Architecture Specimen &amp; <span className="gradient-text-cobalt">Live Test Deck</span>
+            Architecture Specimen &amp; <span className="gradient-text-cyber">Live Test Deck</span>
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
             Interact with live automated test suites, toggle simulation parameters, inspect JSON response structures, or query the real-time CLI terminal.
@@ -464,18 +464,18 @@ export class CheckoutPipeline {
               onClick={() => setActiveDeckMode('3d-cube')}
               className={`flex items-center gap-2 px-5 py-2 text-xs rounded-xl transition-all ${
                 activeDeckMode === '3d-cube'
-                  ? 'bg-blue-600 text-white font-bold shadow-md ring-1 ring-blue-400'
+                  ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-blue-300" />
+              <Sparkles className="w-3.5 h-3.5 text-slate-950" />
               <span>3D Architecture Cube</span>
             </button>
             <button
               onClick={() => setActiveDeckMode('sandbox')}
               className={`flex items-center gap-2 px-5 py-2 text-xs rounded-xl transition-all ${
                 activeDeckMode === 'sandbox'
-                  ? 'bg-blue-600 text-white font-bold shadow-md ring-1 ring-blue-400'
+                  ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
@@ -486,7 +486,7 @@ export class CheckoutPipeline {
               onClick={() => setActiveDeckMode('cli')}
               className={`flex items-center gap-2 px-5 py-2 text-xs rounded-xl transition-all ${
                 activeDeckMode === 'cli'
-                  ? 'bg-blue-600 text-white font-bold shadow-md ring-1 ring-blue-400'
+                  ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
@@ -515,8 +515,8 @@ export class CheckoutPipeline {
             <div className="lg:col-span-5 space-y-5">
               
               {/* Architecture Specimen Selector */}
-              <div className="editorial-card p-5 rounded-3xl border border-slate-800 space-y-3 bg-[#111726]">
-                <span className="text-xs font-mono text-blue-400 uppercase tracking-wider block font-semibold">
+              <div className="editorial-card p-5 rounded-3xl border border-[#00f5ff]/20 space-y-3 bg-[#080e1c]/85">
+                <span className="text-xs font-mono text-[#00f5ff] uppercase tracking-wider block font-semibold">
                   // 1. SELECT ARCHITECTURE SPECIMEN
                 </span>
 
@@ -532,14 +532,14 @@ export class CheckoutPipeline {
                         }}
                         className={`w-full p-4 rounded-2xl border text-left transition-all flex items-start gap-3.5 ${
                           isSelected
-                            ? 'bg-slate-900/90 border-blue-500/50 shadow-md ring-1 ring-blue-500/20'
+                            ? 'bg-slate-900/90 border-[#00f5ff]/50 shadow-md ring-1 ring-[#00f5ff]/20'
                             : 'bg-slate-950/40 border-slate-800/80 hover:bg-slate-900/60 text-slate-300'
                         }`}
                       >
                         <div
                           className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5 ${
                             isSelected
-                              ? 'bg-blue-600 text-white shadow-md'
+                              ? 'bg-[#00f5ff] text-slate-950 shadow-md'
                               : 'bg-slate-900 text-slate-400 border border-slate-800'
                           }`}
                         >
@@ -549,7 +549,7 @@ export class CheckoutPipeline {
                           <h4 className="font-heading font-bold text-sm text-white truncate leading-snug">
                             {proj.title}
                           </h4>
-                          <p className="text-[11px] font-mono text-blue-400">{proj.role}</p>
+                          <p className="text-[11px] font-mono text-[#00f5ff]">{proj.role}</p>
                           <div className="flex flex-wrap gap-1 pt-1">
                             {proj.tags.slice(0, 3).map((tag, tIdx) => (
                               <span
@@ -644,7 +644,7 @@ export class CheckoutPipeline {
                     <button
                       onClick={() => setActiveTab('logs')}
                       className={`px-3 py-1 rounded-lg transition-all ${
-                        activeTab === 'logs' ? 'bg-blue-600 text-white font-bold' : 'text-slate-400 hover:text-white'
+                        activeTab === 'logs' ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-sm' : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       Live Stream
@@ -652,7 +652,7 @@ export class CheckoutPipeline {
                     <button
                       onClick={() => setActiveTab('code')}
                       className={`px-3 py-1 rounded-lg transition-all ${
-                        activeTab === 'code' ? 'bg-blue-600 text-white font-bold' : 'text-slate-400 hover:text-white'
+                        activeTab === 'code' ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-sm' : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       Specimen Code
@@ -660,7 +660,7 @@ export class CheckoutPipeline {
                     <button
                       onClick={() => setActiveTab('payload')}
                       className={`px-3 py-1 rounded-lg transition-all ${
-                        activeTab === 'payload' ? 'bg-blue-600 text-white font-bold' : 'text-slate-400 hover:text-white'
+                        activeTab === 'payload' ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-sm' : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       JSON Payload
@@ -683,7 +683,7 @@ export class CheckoutPipeline {
 
                       {simStep === 0 && !isRunningSim && (
                         <div className="py-12 text-center space-y-3">
-                          <Activity className="w-8 h-8 text-blue-400 mx-auto animate-pulse" />
+                          <Activity className="w-8 h-8 text-[#00f5ff] mx-auto animate-pulse" />
                           <p className="text-slate-400">Ready for execution. Click &apos;Run Test Execution&apos; or &apos;Step Forward&apos; below.</p>
                         </div>
                       )}
@@ -696,11 +696,11 @@ export class CheckoutPipeline {
                               key={lIdx}
                               className={`flex items-start gap-2.5 p-2 rounded-lg leading-relaxed animate-in fade-in duration-200 ${
                                 isPass
-                                  ? 'bg-emerald-950/20 text-emerald-300 border border-emerald-900/40'
+                                  ? 'bg-[#00ff9d]/10 text-[#00ff9d] border border-[#00ff9d]/30'
                                   : 'text-slate-300 bg-slate-900/40'
                               }`}
                             >
-                              <span className="text-blue-400 select-none">❯</span>
+                              <span className="text-[#00f5ff] select-none">❯</span>
                               <span>{log}</span>
                             </div>
                           );
@@ -708,7 +708,7 @@ export class CheckoutPipeline {
                       </div>
 
                       {isRunningSim && (
-                        <div className="flex items-center gap-2 text-blue-400 pt-2 animate-pulse">
+                        <div className="flex items-center gap-2 text-[#00f5ff] pt-2 animate-pulse">
                           <RotateCcw className="w-3.5 h-3.5 animate-spin" />
                           <span>Asserting payload integrity and security headers...</span>
                         </div>
@@ -723,9 +723,9 @@ export class CheckoutPipeline {
                         <span className="text-slate-500 text-[11px]">// IMPLEMENTATION SNIPPET</span>
                         <button
                           onClick={handleCopyCode}
-                          className="flex items-center gap-1 text-[11px] text-blue-400 hover:text-white bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800 transition-colors"
+                          className="flex items-center gap-1 text-[11px] text-[#00f5ff] hover:text-white bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800 transition-colors"
                         >
-                          {copiedCode ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                          {copiedCode ? <Check className="w-3 h-3 text-[#00ff9d]" /> : <Copy className="w-3 h-3" />}
                           <span>{copiedCode ? 'Copied' : 'Copy'}</span>
                         </button>
                       </div>
@@ -740,9 +740,9 @@ export class CheckoutPipeline {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <span className="text-slate-500 text-[11px]">// LIVE JSON RESPONSE PAYLOAD</span>
-                        <span className="text-emerald-400 text-[11px] font-bold">HTTP 200 OK</span>
+                        <span className="text-[#00ff9d] text-[11px] font-bold">HTTP 200 OK</span>
                       </div>
-                      <pre className="p-4 rounded-2xl bg-slate-950 border border-slate-900 text-sky-300 overflow-x-auto text-[11px] leading-relaxed">
+                      <pre className="p-4 rounded-2xl bg-slate-950 border border-slate-900 text-[#00f5ff] overflow-x-auto text-[11px] leading-relaxed">
                         <code>{JSON.stringify(currentProject.jsonPayload, null, 2)}</code>
                       </pre>
                     </div>
@@ -754,9 +754,9 @@ export class CheckoutPipeline {
                       <button
                         onClick={handleRunSimulation}
                         disabled={isRunningSim}
-                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-all hover:scale-[1.02]"
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs bg-[#00f5ff] hover:bg-[#00e1eb] text-slate-950 shadow-md shadow-[#00f5ff]/25 transition-all hover:scale-[1.02]"
                       >
-                        <Play className="w-3.5 h-3.5" />
+                        <Play className="w-3.5 h-3.5 fill-current" />
                         <span>Run Full Suite</span>
                       </button>
 

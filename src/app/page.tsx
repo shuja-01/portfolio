@@ -14,6 +14,8 @@ import ResumeModal from '@/components/ResumeModal';
 import CommandPalette from '@/components/CommandPalette';
 
 import Global3DBackground from '@/components/3d/Global3DBackground';
+import Cursor3DInteractive from '@/components/3d/Cursor3DInteractive';
+import ScrollTelemetryHUD from '@/components/3d/ScrollTelemetryHUD';
 
 export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -34,7 +36,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] relative overflow-x-hidden">
       
-      {/* Global Ambient 3D WebGL Background Starfield & Parallax */}
+      {/* Interactive 3D Cursor Stardust & Kinetic Reticle */}
+      <Cursor3DInteractive />
+
+      {/* 3D Orbital Scroll Telemetry Gauge & Sector Warp HUD */}
+      <ScrollTelemetryHUD />
+
+      {/* Global Ambient 3D WebGL Background Starfield, Warp Streaks & Parallax */}
       <Global3DBackground />
 
       {/* Precision Navigation Header */}

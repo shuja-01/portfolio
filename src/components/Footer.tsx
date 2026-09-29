@@ -17,7 +17,7 @@ export default function Footer({}: FooterProps) {
   };
 
   return (
-    <footer className="border-t border-slate-800/80 bg-[#070a10] py-12 text-slate-400 font-mono text-xs">
+    <footer className="border-t border-[#00f5ff]/15 bg-[#03060f] py-12 text-slate-400 font-mono text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -25,7 +25,7 @@ export default function Footer({}: FooterProps) {
           <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
             <div className="flex items-center gap-2">
               <span className="font-heading font-bold text-white text-sm">Mohd Shuja Rizvi</span>
-              <span className="text-blue-400 text-xs font-semibold">// Process Automation &amp; Frontend Architect</span>
+              <span className="text-[#00f5ff] text-xs font-semibold">// Process Automation &amp; Frontend Architect</span>
             </div>
             <p className="text-[11px] text-slate-500">
               Capgemini Malaysia • Electrical Engineering (GCET Graduate) • IEEE Published Author
@@ -38,9 +38,9 @@ export default function Footer({}: FooterProps) {
               href="https://www.linkedin.com/in/mshuja-rizvi/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-blue-400 border border-slate-800 transition-all text-xs font-semibold shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-[#00f5ff] border border-slate-800 transition-all text-xs font-semibold shadow-sm"
             >
-              <LinkedinIcon className="w-3.5 h-3.5 text-blue-400" />
+              <LinkedinIcon className="w-3.5 h-3.5 text-[#00f5ff]" />
               <span>LinkedIn</span>
             </a>
 
@@ -48,7 +48,7 @@ export default function Footer({}: FooterProps) {
               href="https://github.com/shuja-01"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 transition-all text-xs font-semibold shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-[#00f5ff] border border-slate-800 transition-all text-xs font-semibold shadow-sm"
             >
               <GithubIcon className="w-3.5 h-3.5" />
               <span>GitHub</span>
@@ -56,7 +56,7 @@ export default function Footer({}: FooterProps) {
 
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-blue-400 border border-slate-800 transition-all shadow-sm"
+              className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-[#00f5ff] border border-slate-800 transition-all shadow-sm"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-4 h-4" />

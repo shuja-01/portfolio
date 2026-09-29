@@ -164,12 +164,12 @@ export default function ExperienceTimeline() {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-400 shadow-sm font-semibold">
-            <Briefcase className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-[#00f5ff]/30 text-xs font-mono text-[#00f5ff] shadow-sm font-semibold">
+            <Briefcase className="w-3.5 h-3.5 text-[#00f5ff]" />
             <span>CAREER CHRONOLOGY &amp; IMPACT</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
-            Professional <span className="gradient-text-cobalt">Journey &amp; Milestones</span>
+            Professional <span className="gradient-text-cyber">Journey &amp; Milestones</span>
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
             Progressive engineering trajectory spanning enterprise automation at Capgemini, storefront leadership at Torn &amp; Stitched, and software development at Newgen.
@@ -190,7 +190,7 @@ export default function ExperienceTimeline() {
                   onClick={() => setActiveTab(tab.key as any)}
                   className={`px-3.5 py-1.5 rounded-xl transition-all ${
                     activeTab === tab.key
-                      ? 'bg-blue-600 text-white font-bold shadow-md'
+                      ? 'bg-[#00f5ff] text-slate-950 font-bold shadow-md shadow-[#00f5ff]/25'
                       : 'text-slate-400 hover:text-white hover:bg-slate-900'
                   }`}
                 >
@@ -204,11 +204,11 @@ export default function ExperienceTimeline() {
               onClick={togglePlayCareer}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all border font-bold ${
                 isPlaying
-                  ? 'bg-emerald-600 border-emerald-500 text-white shadow-lg shadow-emerald-600/30 animate-pulse'
+                  ? 'bg-[#00ff9d] border-[#00ff9d] text-slate-950 shadow-lg shadow-[#00ff9d]/30 animate-pulse'
                   : 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800'
               }`}
             >
-              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
+              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-[#00ff9d]" />}
               <span>{isPlaying ? 'Playing Trajectory...' : 'Play Career Walkthrough'}</span>
             </button>
 
@@ -218,7 +218,7 @@ export default function ExperienceTimeline() {
         {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto">
           {/* Center Track Line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-indigo-500 to-slate-800 -translate-x-1/2 opacity-40 hidden sm:block" />
+          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#00f5ff] via-[#a855f7] to-slate-800 -translate-x-1/2 opacity-40 hidden sm:block" />
 
           <div className="space-y-8">
             {filteredData.map((item, index) => {
@@ -236,11 +236,11 @@ export default function ExperienceTimeline() {
                   <div
                     className={`absolute left-4 sm:left-1/2 top-7 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-950 border-2 z-20 shadow-md hidden sm:flex items-center justify-center transition-all ${
                       isExpanded
-                        ? 'border-blue-400 shadow-blue-500/50 scale-125'
+                        ? 'border-[#00f5ff] shadow-[#00f5ff]/50 scale-125'
                         : 'border-slate-700'
                     }`}
                   >
-                    <span className={`w-1.5 h-1.5 rounded-full ${isExpanded ? 'bg-blue-400' : 'bg-slate-700'}`}></span>
+                    <span className={`w-1.5 h-1.5 rounded-full ${isExpanded ? 'bg-[#00f5ff]' : 'bg-slate-700'}`}></span>
                   </div>
 
                   {/* Card Container */}
@@ -250,18 +250,18 @@ export default function ExperienceTimeline() {
                         onClick={() => setExpandedId(isExpanded ? '' : item.id)}
                         className={`editorial-card p-6 sm:p-7 rounded-3xl border transition-all cursor-pointer ${
                           isExpanded
-                            ? 'border-blue-500/60 bg-[#161e31] shadow-2xl ring-1 ring-blue-500/30'
-                            : 'border-slate-800 hover:border-slate-700 bg-[#111726]'
+                            ? 'border-[#00f5ff]/60 bg-[#0c152a] shadow-2xl ring-1 ring-[#00f5ff]/30'
+                            : 'border-slate-800 hover:border-[#00f5ff]/30 bg-[#080e1c]/80'
                         }`}
                       >
                       {/* Top Meta Bar */}
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="text-xs font-mono text-blue-400 flex items-center gap-1.5 font-semibold">
+                        <span className="text-xs font-mono text-[#00f5ff] flex items-center gap-1.5 font-semibold">
                           <Calendar className="w-3.5 h-3.5" />
                           {item.period}
                         </span>
                         {item.badge && (
-                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
+                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-[#00ff9d]/10 border border-[#00ff9d]/30 text-[#00ff9d] font-bold">
                             {item.badge}
                           </span>
                         )}
@@ -273,7 +273,7 @@ export default function ExperienceTimeline() {
                       </h3>
                       <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 mt-1 mb-4">
                         <span className="text-slate-200 font-bold flex items-center gap-1.5">
-                          <Building2 className="w-3.5 h-3.5 text-blue-400" />
+                          <Building2 className="w-3.5 h-3.5 text-[#00f5ff]" />
                           {item.company}
                         </span>
                         <span>•</span>
@@ -295,7 +295,7 @@ export default function ExperienceTimeline() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 hover:underline font-semibold bg-blue-950/40 px-3 py-1.5 rounded-lg border border-blue-500/30"
+                            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00f5ff] hover:underline font-semibold bg-[#00f5ff]/10 px-3 py-1.5 rounded-lg border border-[#00f5ff]/30"
                           >
                             <span>{item.linkText || 'Read Paper on IEEE Xplore'}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -307,13 +307,13 @@ export default function ExperienceTimeline() {
                       {isExpanded && (
                         <div className="space-y-4 pt-4 border-t border-slate-800/80 animate-in fade-in duration-200">
                           <div>
-                            <span className="text-[11px] font-mono text-blue-400 block mb-2 uppercase tracking-wider font-semibold">
+                            <span className="text-[11px] font-mono text-[#00f5ff] block mb-2 uppercase tracking-wider font-semibold">
                               Key Responsibilities &amp; Workflows:
                             </span>
                             <ul className="space-y-2">
                               {item.responsibilities.map((resp, rIdx) => (
                                 <li key={rIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed font-normal">
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 mt-0.5 shrink-0" />
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00f5ff] mt-0.5 shrink-0" />
                                   <span>{resp}</span>
                                 </li>
                               ))}
@@ -322,13 +322,13 @@ export default function ExperienceTimeline() {
 
                           {item.contributions && (
                             <div>
-                              <span className="text-[11px] font-mono text-emerald-400 block mb-2 uppercase tracking-wider font-semibold">
+                              <span className="text-[11px] font-mono text-[#00ff9d] block mb-2 uppercase tracking-wider font-semibold">
                                 Quantifiable Impact &amp; Results:
                               </span>
                               <ul className="space-y-2">
                                 {item.contributions.map((cnt, cIdx) => (
                                   <li key={cIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed font-normal">
-                                    <Sparkles className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                                    <Sparkles className="w-3.5 h-3.5 text-[#00ff9d] mt-0.5 shrink-0" />
                                     <span>{cnt}</span>
                                   </li>
                                 ))}
@@ -351,7 +351,7 @@ export default function ExperienceTimeline() {
                       </div>
 
                       {/* Expand/Collapse Trigger */}
-                      <div className="flex items-center justify-end text-[11px] font-mono text-blue-400 mt-3 pt-2 border-t border-slate-800/40 font-semibold">
+                      <div className="flex items-center justify-end text-[11px] font-mono text-[#00f5ff] mt-3 pt-2 border-t border-slate-800/40 font-semibold">
                         <span>{isExpanded ? 'Collapse view' : 'Click to expand details'}</span>
                         <ChevronRight className={`w-3.5 h-3.5 ml-1 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
                       </div>
